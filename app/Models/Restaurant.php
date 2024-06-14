@@ -17,7 +17,7 @@ class Restaurant extends Model
         return $this->belongsTo(Dish::class);
     }
     public function types(){
-        return $this->belongsToMany((Type::class));
+        return $this->belongsToMany(Type::class);
     }
 
     protected $fillable = [
