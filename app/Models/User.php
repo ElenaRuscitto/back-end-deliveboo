@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Restaurant;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public function restaurant(){
+        return $this->belongsTo(Restaurant::class);
+    }
+
+
     protected $fillable = [
+        'restaurant_id',
         'name',
         'surname',
         'email',
