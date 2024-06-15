@@ -21,6 +21,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
                 </li>
+
+                {{-- ordini --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('admin.orders.index')}}">Ordini</a>
+                </li>
+
             </ul>
 
             <!-- Right Side Of Navbar -->
