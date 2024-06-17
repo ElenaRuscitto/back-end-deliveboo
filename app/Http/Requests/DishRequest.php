@@ -25,7 +25,7 @@ class DishRequest extends FormRequest
         return [
                 'name' => 'required|string|max:100',
                 'desc' => 'nullable|string',
-                'price' => 'required|numeric|between:0,999.99',
+                'price' => 'required|numeric|between:0,99.99',
                 'visibility' => 'required|boolean',
                 'image' => 'nullable|string|max:100',
                 'vegan' => 'nullable|boolean',

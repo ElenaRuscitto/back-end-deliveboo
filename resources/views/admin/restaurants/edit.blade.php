@@ -97,4 +97,66 @@
     </form>
 </div>
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("form").validate({
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 100
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    maxlength: 255
+                },
+                address: {
+                    required: true,
+                    minlength:5,
+                    maxlength: 100
+                },
+                vat: {
+                    required: true,
+                    minlength: 11,
+                    maxlength: 11
+                },
+                image: {
+                    required: false,
+                    maxlength: 255
+                    //filesize: 2048000 // 2MB in bytes
+                }
+            },
+            messages: {
+                name: {
+                    required: "Il nome è obbligatorio",
+                    maxlength: "Il nome non può superare i 100 caratteri"
+                },
+                email: {
+                    required: "L'email è obbligatoria",
+                    email: "Inserisci un'email valida",
+                    maxlength: "L'email non può superare i 255 caratteri"
+                },
+                address: {
+                    required: "L'indirizzo è obbligatorio",
+                    maxlength: "L'indirizzo non può superare i 100 caratteri"
+                },
+                vat: {
+                    required: "La P.IVA è obbligatoria",
+                    maxlength: "La P.IVA non può superare gli 11 caratteri"
+                },
+               /* image: {
+                    extension: "Il file deve essere un'immagine (jpg, jpeg, png)",
+                    //filesize: "L'immagine non può superare i 2MB"
+                } */
+            }
+        });
+
+
+    });
+</script>
+
 @endsection

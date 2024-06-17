@@ -25,7 +25,7 @@ class RestaurantRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:100',
             //! Controllo che l'email e l'indirizzo siano univoci e che se modifico devo ignorare questo record
-            'email' => 'required|email|max:255|unique:restaurants',
+            'email' => 'required|email|max:255|unique:restaurants' ,
             // 'email' => 'required|email|max:255|unique:restaurants,email' . $restaurantId,
             'address' => 'required|min:5|max:100|unique:restaurants',
             'vat' => 'required|size:11|unique:restaurants',

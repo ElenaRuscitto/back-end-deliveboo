@@ -27,6 +27,9 @@
                       id="name"
                       name="name"
                       value="name"
+                      required
+                      minlength="3"
+                      maxlength="100"
                     >
                 </div>
             </div>
@@ -42,6 +45,9 @@
                       placeholder="tuaemail@esempio.it"
                       value="email"
                       name="email"
+                      required
+                      minlength="3"
+                      maxlength="255"
                     >
                 </div>
             </div>
@@ -56,6 +62,9 @@
                       id="address"
                       value="address"
                       name="address"
+                      required
+                      minlength="5"
+                      maxlength="100"
                     >
                 </div>
             </div>
@@ -70,6 +79,9 @@
                       id="vat"
                       value="vat"
                       name="vat"
+                      required
+                      min="11"
+                      max="11"
                     >
                 </div>
             </div>
@@ -96,5 +108,13 @@
         </div>
     </form>
 </div>
+
+
+
+<!--
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+-->
+
 
 @endsection
