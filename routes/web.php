@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
                     Route::resource('/restaurants', RestaurantsController::class);
 
-                    //! Rotta di creazione e salvataggio
+                    //! Rotta di creazione e salvataggio piatti
                     Route::get('/restaurants/{restaurant}/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
                     Route::post('/restaurants/{restaurant}/dishes', [DishesController::class, 'store'])->name('dishes.store');
 
@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])
                     Route::get('/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
                     Route::put('/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');
 
-                    //! Rotta per il delete
+                    //! Rotta per il delete piatti
                     Route::delete('/restaurants/{restaurant}/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
                 });
 

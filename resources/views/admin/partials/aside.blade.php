@@ -16,15 +16,19 @@
         @endif --}}
         {{--! /Debug Aggiunta ristorante --}}
 
-        {{--? Aggiunta piatto --}}
-        <div class="col mb-3 my-link">
-            <a class="nav-link" href="{{ route('admin.dishes.create', $restaurant)}}">Aggiungi piatto</a>
-        </div>
-        {{--? /Aggiunta piatto --}}
-        {{--? Visualizzazione piatti --}}
-        <div class="col mb-3 my-link">
-            <a class="nav-link" href="{{ route('admin.restaurants.show', $restaurant->id) }}">Visualizza Piatti</a>
-        </div>
-        {{--? /Visualizzazione piatti --}}
+        @if (!empty($restaurant))
+
+            {{--? Aggiunta piatto --}}
+            <div class="col mb-3 my-link">
+                <a class="nav-link" href="{{ route('admin.dishes.create', $restaurant)}}">Aggiungi piatto</a>
+            </div>
+            {{--? /Aggiunta piatto --}}
+            {{--? Visualizzazione piatti --}}
+            <div class="col mb-3 my-link">
+                <a class="nav-link" href="{{ route('admin.restaurants.show', $restaurant->id) }}">Visualizza Piatti</a>
+            </div>
+            {{--? /Visualizzazione piatti --}}
+
+        @endif
     </div>
 </div>

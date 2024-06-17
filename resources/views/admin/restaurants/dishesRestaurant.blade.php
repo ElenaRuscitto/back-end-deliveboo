@@ -3,24 +3,6 @@
 @section('content')
     <div class="container">
 
-        {{-- <h4 class="my-5">Ciao {{ $user->name }} {{ $user->surname }} </h4> --}}
-        <p class="my-5">
-            Queste solo le informazioni sul tuo Ristorante
-        </p>
-        <div class="card">
-            <div class="card-header">
-                {{-- @dd($restaurant) --}}
-                {{ $restaurant->name }}
-            </div>
-            <div class="card-body">
-                <p>Nome: {{ $restaurant->name }}</p>
-                <p>Email: {{ $restaurant->email }}</p>
-                <p>Indirizzo: {{ $restaurant->address }}</p>
-                <p>P.IVA: {{ $restaurant->vat }}</p>
-
-            </div>
-        </div>
-
         <div class=" my-3">
 
             <div class="text-center">
@@ -31,7 +13,7 @@
             @else
             <div class="d-flex justify-content-evenly flex-wrap m-5">
                 @foreach ($restaurant->dishes as $dish)
-                <div class="card text-center my-card" style="width: 18rem;">
+                <div class="card text-center my-card m-2" style="width: 18rem;">
                     <img src="{{$dish->image}}" class="card-img-top my-image" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"> <span class="strong">Nome Piatto: </span>{{ $dish->name }}</h5>
