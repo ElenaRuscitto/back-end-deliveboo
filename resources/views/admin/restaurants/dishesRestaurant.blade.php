@@ -23,7 +23,7 @@
                       <p class="card-text"><span class="strong">Vegano: </span>{{ $dish->vegan ? 'Yes' : 'No' }}</p>
 
                       <div class="d-flex justify-content-center">
-                        <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{{ route('admin.dishes.edit', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
                         <form
                           action="{{ route('admin.dishes.destroy', ['restaurant' => $restaurant->id, 'dish'=> $dish->id])}}"
                           method="POST"

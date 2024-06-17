@@ -23,7 +23,7 @@ class DishRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'name' => 'required|string|max:100',
+                'name' => 'required|string|min:3|max:100',
                 'desc' => 'nullable|string',
                 'price' => 'required|numeric|between:0,99.99',
                 'visibility' => 'required|boolean',

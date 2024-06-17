@@ -10,13 +10,13 @@
         </div>
         {{--! Debug Aggiunta ristorante --}}
         {{-- @if(Route::currentRouteName() !== 'admin.restaurants.index')
+
         <div class="col mb-3 my-link">
             <a class="nav-link" href="{{ route('admin.restaurants.create')}}">Aggiungi</a>
         </div>
         @endif --}}
         {{--! /Debug Aggiunta ristorante --}}
-
-        @if (!empty($restaurant))
+        @if (isset($restaurant) && !empty($restaurant))
 
             {{--? Aggiunta piatto --}}
             <div class="col mb-3 my-link">

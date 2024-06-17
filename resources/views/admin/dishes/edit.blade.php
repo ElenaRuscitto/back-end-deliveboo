@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="container">
     <h1 class="my-5">Modifica Piatto {{$dish->name}}</h1>
     {{-- @dd($dish) --}}
@@ -10,7 +11,7 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.dishes.update', $dish) }}" method="POST">
+    <form action="{{ route('admin.dishes.update', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" method="POST">
         @csrf
         @method('PUT')
 

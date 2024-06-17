@@ -26,7 +26,8 @@
                       class="form-control"
                       id="name"
                       name="name"
-                      value="name"
+                      {{-- value="name" --}}
+                      placeholder="nome"
                       required
                       minlength="3"
                       maxlength="100"
@@ -43,8 +44,9 @@
                       class="form-control"
                       id="email"
                       placeholder="tuaemail@esempio.it"
-                      value="email"
+                      {{-- value="email" --}}
                       name="email"
+                      placeholder="email"
                       required
                       minlength="3"
                       maxlength="255"
@@ -60,7 +62,8 @@
                       type="address"
                       class="form-control"
                       id="address"
-                      value="address"
+                      {{-- value="address" --}}
+                      placeholder="address"
                       name="address"
                       required
                       minlength="5"
@@ -77,7 +80,8 @@
                       type="vat"
                       class="form-control"
                       id="vat"
-                      value="vat"
+                      {{-- value="vat" --}}
+                      placeholder="P.Iva"
                       name="vat"
                       required
                       min="11"
@@ -94,7 +98,8 @@
                       class="form-control"
                       type="file"
                       id="image"
-                      value="image"
+                      {{-- value="image" --}}
+                      placeholder="Immagine"
                       name="image"
                     >
                 </div>

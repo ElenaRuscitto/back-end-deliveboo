@@ -38,8 +38,8 @@ Route::middleware(['auth', 'verified'])
                     Route::post('/restaurants/{restaurant}/dishes', [DishesController::class, 'store'])->name('dishes.store');
 
                     //? Rotta di Edit per il piatto
-                    Route::get('/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
-                    Route::put('/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');
+                    Route::get('/restaurants/{restaurant}/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
+                    Route::put('/restaurants/{restaurant}/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');
 
                     //! Rotta per il delete piatti
                     Route::delete('/restaurants/{restaurant}/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');

@@ -12,11 +12,16 @@ class DashboardController extends Controller
 {
     public function index () {
 
-          // Controllo se l'utente è autenticato
-          $user = Auth::user();
+        // Controllo se l'utente è autenticato
+        $user = Auth::user();
 
-           // Prendo il ristorante associato all'utente
+        // Prendo il ristorante associato all'utente
         $restaurant = Restaurant::where('user_id', $user->id)->first();
+
+
+        if(!$restaurant) {
+            return view('admin.restaurants.create');
+        }
 
         return view ('admin.restaurants.index', compact('restaurant', 'user'));
     }

@@ -72,7 +72,7 @@ class DishesController extends Controller
         // Aggiorna il prodotto con i dati validati
         $dish->update($request->all());
         // Reindirizza alla pagina di modifica con un messaggio di successo
-        return redirect()->route('admin.restaurants.index')->with('success', 'Piatto aggiornato');
+        return redirect()->route('admin.restaurants.index', compact('restaurant' ))->with('success', 'Piatto aggiornato');
     }
 
     public function destroy(Restaurant $restaurant,Dish $dish)

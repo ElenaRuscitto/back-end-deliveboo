@@ -19,7 +19,7 @@
             @csrf
             <div class="form-group mt-3">
                 <label for="name">Nome</label>
-                <input type="text" class="form-control" id="name" name="name" required minlength="3" maxlength="100">
+                <input type="text" class="form-control" id="name" name="name" required minlength='3' maxlength='100'>
             </div>
             <div class="form-group mt-3">
                 <label for="desc">Descrizione</label>
