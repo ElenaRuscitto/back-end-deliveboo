@@ -3,64 +3,56 @@
 @section('content')
     <div class="container">
 
-        {{-- <h4 class="my-5">Ciao {{ $user->name }} {{ $user->surname }} </h4> --}}
-        <p class="mb-5">
-            Queste solo le informazioni sul tuo Ristorante
-        </p>
-        <div class="card">
-            <div class="card-header">
-                {{-- @dd($restaurant) --}}
-                {{ $restaurant->name }}
-            </div>
-            <div class="card-body">
-                <p>Nome: {{ $restaurant->name }}</p>
-                <p>Email: {{ $restaurant->email }}</p>
-                <p>Indirizzo: {{ $restaurant->address }}</p>
-                <p>P.IVA: {{ $restaurant->vat }}</p>
+        <div class=" my-3">
 
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-center my-3">
-            <h2>Piatti</h2>
-            <div class="">
-                {{-- @dd($restaurant) --}}
+            <div class="text-center">
                 <a href="{{ route('admin.dishes.create', $restaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
             </div>
             @if (empty($restaurant->dishes))
                 <p>Non ci sono piatti</p>
             @else
-                <ul>
-                    @foreach ($restaurant->dishes as $dish)
-                        <li>
-                            <p>{{ $dish->name }}</p>
-                            <p>{{ $dish->desc }}</p>
-                            <p>{{ $dish->price }}</p>
-                            <p>{{ $dish->visibility ? 'Visible' : 'Hidden' }}</p>
-                            <p>{{ $dish->vegan ? 'Yes' : 'No' }}</p>
-                            <p> {{$dish->image}}</p>
+            <div class="d-flex justify-content-evenly flex-wrap m-5">
+                @foreach ($restaurant->dishes as $dish)
+                <div class="card text-center my-card m-2" style="width: 18rem;">
+                    <img src="{{$dish->image}}" class="card-img-top my-image" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"> <span class="strong">Nome Piatto: </span>{{ $dish->name }}</h5>
+                      <h6 class="card-subtitle mb-2 text-body-secondary"><span class="strong">Prezzo: &euro; </span>{{ $dish->price }}</h6>
+                      <p class="card-text"><span class="strong">Indredienti/Descrizione: </span>{{ $dish->desc }}</p>
+                      <p class="card-text"><span class="strong">Visibilità: </span>{{ $dish->visibility ? 'Visible' : 'Hidden' }}</p>
+                      <p class="card-text"><span class="strong">Vegano: </span>{{ $dish->vegan ? 'Yes' : 'No' }}</p>
 
-                            <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
-                            {{-- <a href="{{ route('admin.dishes.destroy', $dish) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> --}}
-
-                            <form
-                              action="{{ route('admin.dishes.destroy', ['restaurant' => $restaurant->id, 'dish'=> $dish->id])}}"
-                              method="POST"
-                              class=""
+                      <div class="d-flex justify-content-center">
+                        <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                        <form
+                          action="{{ route('admin.dishes.destroy', ['restaurant' => $restaurant->id, 'dish'=> $dish->id])}}"
+                          method="POST"
+                          class="mx-2"
+                        >
+                            @csrf
+                            @method('DELETE')
+                            <button
+                              type="submit"
+                              class="btn btn-danger"
+                              onclick="return confirm('Sei sicuro di voler eliminare il piatto?')"
                             >
-                                @csrf
-                                @method('DELETE')
-                                <button
-                                  type="submit"
-                                  class="btn btn-danger"
-                                  onclick="return confirm('Sei sicuro di voler eliminare il piatto?')"
-                                >
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        </li>
-                    @endforeach
-                </ul>
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                      </div>
+
+                    </div>
+
+
+
+                        {{-- <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a> --}}
+                        {{-- <a href="{{ route('admin.dishes.destroy', $dish) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> --}}
+
+                </div>
+
+                @endforeach
+            </div>
+
             @endif
         </div>
 

@@ -69,7 +69,7 @@
                       class="form-control"
                       id="vat"
                       value="{{ $restaurant->vat }}"
-                      name="vat"
+                      name="P.Iva"
                     >
                 </div>
             </div>

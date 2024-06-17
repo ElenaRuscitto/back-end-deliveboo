@@ -1,0 +1,21 @@
+@import "/resources/scss/partials/variables";
+
+body {
+    overflow: hidden;
+
+    .content {
+        width: calc(100vw - 230px);
+        height: calc(100vh - 100px);
+        margin: 100px 220px 0;
+        overflow: auto;
+    }
+
+    .my-header {
+        background-color: $third-color !important;
+        .my-logo {
+            color: orange !important;
+
+        }
+    }
+
+}

@@ -1,0 +1,17 @@
+@import "/resources/scss/partials/variables";
+.aside {
+    width: 200px;
+    height: calc(100vh - 68px);
+    position: fixed;
+    top: 68px;
+
+    background-color: $third-color;
+
+    .my-link {
+        color: $primary-color;
+        &:hover {
+            margin-left: 30px;
+            transition: all 1s;
+        }
+    }
+}

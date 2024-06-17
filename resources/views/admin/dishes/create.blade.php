@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         {{-- @dd($restaurant) --}}
+
         <h1>Crea Piatto</h1>
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -13,6 +14,7 @@
             </ul>
         </div>
         @endif
+
         <form action="{{ route('admin.dishes.store', $restaurant) }}" method="POST">
             @csrf
             <div class="form-group mt-3">
@@ -89,7 +91,9 @@
                     </label>
                   </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Salva</button>
+            <button type="submit" class="btn btn-success mt-3">
+                <i class="fa-solid fa-floppy-disk"></i>
+            </button>
         </form>
     </div>
 
