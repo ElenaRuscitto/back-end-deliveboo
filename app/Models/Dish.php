@@ -11,7 +11,7 @@ class Dish extends Model
 {
     use HasFactory;
     public function restaurants(){
-        return $this->hasMany(Restaurant::class);
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function orders(){

@@ -2,8 +2,9 @@
 
 @section('content')
     <div class="container">
+        {{-- @dd($restaurant) --}}
         <h1>Crea Piatto</h1>
-        <form action="{{ route('admin.dishes.store') }}" method="POST">
+        <form action="{{ route('admin.dishes.store', $restaurant) }}" method="POST">
             @csrf
             <div class="form-group mt-3">
                 <label for="name">Nome</label>
@@ -20,19 +21,33 @@
             <div class="form-group mt-3">
                 <label for="visibility">Visibilità</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="visibility"
+                      id="visibility"
+                      value="1"
+                      checked
+                    >
                     <label class="form-check-label" for="flexRadioDefault1">
                       Si
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="visibility"
+                      id="visibility"
+                      value="0"
+                      checked
+                    >
+                    <label class="form-check-label" for="visibility">
                       No
                     </label>
                   </div>
             </div>
-            <!--TOFIX: cambiare input -->
+            <!--FIXME: cambiare input -->
             <div class="form-group mt-3">
                 <label for="image">Immagine</label>
                 <input type="text" class="form-control" id="image" name="image">
@@ -40,14 +55,28 @@
             <div class="form-group mt-3">
                 <label for="vegan">Vegano</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      checked
+                      name="vegan"
+                      id="vegan"
+                      value="0"
+                      checked
+                    >
+                    <label class="form-check-label" for="vegan">
                       No
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vegan"
+                      id="vegan"
+                      value="1"
+                    >
+                    <label class="form-check-label" for="vegan">
                       Si
                     </label>
                   </div>

@@ -21,24 +21,26 @@ class DishesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Restaurant $restaurant)
     {
-
-         return view('admin.dishes.create');
+        // dd($restaurant);
+        return view('admin.dishes.create', compact('restaurant'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(DishRequest $request)
+    public function store(DishRequest $request, Restaurant $restaurant)
     {
         $form_data = $request->all();
-            $new_dish = new Dish();
-            $new_dish -> fill($form_data);
+        $new_dish = new Dish();
+        $new_dish -> fill($form_data);
 
-            $new_dish-> save();
+        $new_dish->restaurant_id = $restaurant->id;
+        // dd($new_dish);
+        $new_dish-> save();
 
-            return redirect()->route('admin.dishes.index')->with('success', 'Piatto aggiunto');
+        return redirect()->route('admin.restaurants.index', ['restaurant' => $restaurant->id])->with('success', 'Piatto aggiunto');
     }
 
     /**
@@ -55,6 +57,7 @@ class DishesController extends Controller
      */
     public function edit(Dish $dish)
     {
+        dd($dish);
          return view( 'admin.dishes.edit', compact('dish'));
     }
 
@@ -65,7 +68,7 @@ class DishesController extends Controller
     {
 
     $form_data = $request->all();
-        $dish -> update($form_data);
+    $dish -> update($form_data);
 
 
     // Aggiorna il prodotto con i dati validati
