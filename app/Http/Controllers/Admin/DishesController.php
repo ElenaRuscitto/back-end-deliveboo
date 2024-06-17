@@ -57,7 +57,7 @@ class DishesController extends Controller
      */
     public function edit(Restaurant $restaurant,Dish $dish)
     {
-        return view( 'admin.dishes.edit', compact('restaurant','dish'));
+        return view('admin.dishes.edit', compact('restaurant','dish'));
     }
 
     /**
@@ -66,14 +66,13 @@ class DishesController extends Controller
     public function update(DishRequest $request, Restaurant $restaurant, Dish $dish)
     {
 
-    $form_data = $request->all();
-    $dish -> update($form_data);
+        $form_data = $request->all();
+        $dish -> update($form_data);
 
-    // dd($dish);
-    // Aggiorna il prodotto con i dati validati
-    $dish->update($request->all());
-    // Reindirizza alla pagina di modifica con un messaggio di successo
-    return redirect()->route('admin.restaurants.index')->with('success', 'Piatto aggiornato');
+        // Aggiorna il prodotto con i dati validati
+        $dish->update($request->all());
+        // Reindirizza alla pagina di modifica con un messaggio di successo
+        return redirect()->route('admin.restaurants.index')->with('success', 'Piatto aggiornato');
     }
 
     public function destroy(Restaurant $restaurant,Dish $dish)

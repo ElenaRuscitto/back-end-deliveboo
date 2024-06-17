@@ -40,7 +40,6 @@
                       name="visibility"
                       id="visibility"
                       value="0"
-                      checked
                     >
                     <label class="form-check-label" for="visibility">
                       No
