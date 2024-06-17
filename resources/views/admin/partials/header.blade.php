@@ -19,8 +19,16 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
+                    <a class="nav-link" href="{{ route('admin.home')}}">{{ __('Home') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.restaurants.index')}}">Il tuo Ristoarante</a>
+                </li>
+                @if(Route::currentRouteName() !== 'admin.restaurants.index')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.restaurants.create')}}">Aggiungi</a>
+                </li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
