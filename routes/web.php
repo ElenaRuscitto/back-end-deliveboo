@@ -30,8 +30,8 @@ Route::middleware(['auth', 'verified'])
                 ->group(function(){
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
-                    Route::resource('/restaurants', RestaurantsController::class);
-                    Route::resource('/dishes', DishesController::class);
+                   // Route::resource('/restaurants', RestaurantsController::class);
+                   // Route::resource('/dishes', DishesController::class);
                 });
 
 Route::middleware('auth')->group(function () {
