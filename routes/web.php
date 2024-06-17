@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\DishesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +31,8 @@ Route::middleware(['auth', 'verified'])
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
                     Route::resource('restaurants', RestaurantController::class);
-                    // Route::resource('technologies', ProjectController::class);
-                    // Route::resource('types', ProjectController::class);
+                    Route::resource('/dishes', DishesController::class);
                 });
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
