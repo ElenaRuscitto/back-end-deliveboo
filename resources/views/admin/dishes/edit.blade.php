@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Edit Dish</h1>
-    @dd($dish)
+    {{-- @dd($dish) --}}
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

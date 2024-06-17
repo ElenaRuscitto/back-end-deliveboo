@@ -55,34 +55,32 @@ class DishesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Dish $dish)
+    public function edit(Restaurant $restaurant,Dish $dish)
     {
-        dd($dish);
-         return view( 'admin.dishes.edit', compact('dish'));
+        return view( 'admin.dishes.edit', compact('restaurant','dish'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(DishRequest $request, Dish $dish)
+    public function update(DishRequest $request, Restaurant $restaurant, Dish $dish)
     {
 
     $form_data = $request->all();
     $dish -> update($form_data);
 
-
+    // dd($dish);
     // Aggiorna il prodotto con i dati validati
-    //$dish->update($request->all());
-
+    $dish->update($request->all());
     // Reindirizza alla pagina di modifica con un messaggio di successo
-    return redirect()->route('admin.dishes.index', $dish)->with('success', 'Piatto aggiornato');
+    return redirect()->route('admin.restaurants.index')->with('success', 'Piatto aggiornato');
     }
 
-    public function destroy(Dish $dish)
+    public function destroy(Restaurant $restaurant,Dish $dish)
     {
          $dish->delete();
 
-       return redirect()->route('admin.dishes.index')
-        ->with('success', 'Piatto eliminato');
+       return redirect()->route('admin.restaurants.index')
+        ->with('success', 'Piatto eliminato con successo.');
     }
 }
