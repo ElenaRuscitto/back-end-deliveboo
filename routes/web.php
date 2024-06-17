@@ -6,6 +6,10 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantsController;
 
+ //use App\Http\Controllers\Admin\DishesController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,13 +33,14 @@ Route::middleware(['auth', 'verified'])
                 ->group(function(){
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
+
+                   // Route::resource('/restaurants', RestaurantsController::class);
+                   // Route::resource('/dishes', DishesController::class);
+
                     Route::resource('/restaurants', RestaurantsController::class);
-                    // Route::resource('technologies', ProjectController::class);
-                    // Route::resource('types', ProjectController::class);
+                   
+
                 });
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
