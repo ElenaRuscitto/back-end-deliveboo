@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\RestaurantsController;
 use App\Http\Controllers\Admin\DishesController;
 
 /*
@@ -30,7 +30,7 @@ Route::middleware(['auth', 'verified'])
                 ->group(function(){
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
-                    Route::resource('restaurants', RestaurantController::class);
+                    Route::resource('/restaurants', RestaurantsController::class);
                     Route::resource('/dishes', DishesController::class);
                 });
 
