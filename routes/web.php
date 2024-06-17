@@ -6,8 +6,7 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantsController;
 use App\Http\Controllers\Admin\DishesController;
-
-
+use App\Models\Restaurant;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +31,18 @@ Route::middleware(['auth', 'verified'])
                 ->group(function(){
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
-
                     Route::resource('/restaurants', RestaurantsController::class);
-                    Route::resource('/dishes', DishesController::class);
 
+                    //! Rotta di creazione e salvataggio
+                    Route::get('/restaurants/{restaurant}/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
+                    Route::post('/restaurants/{restaurant}/dishes', [DishesController::class, 'store'])->name('dishes.store');
 
+                    //? Rotta di Edit per il piatto
+                    Route::get('/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
+                    Route::put('/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');
 
+                    //! Rotta per il delete
+                    Route::delete('/restaurants/{restaurant}/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
                 });
 
 Route::middleware('auth')->group(function () {

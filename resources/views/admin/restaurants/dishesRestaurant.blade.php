@@ -23,7 +23,10 @@
 
         <div class="d-flex justify-content-center my-3">
             <h2>Piatti</h2>
-
+            <div class="">
+                {{-- @dd($restaurant) --}}
+                <a href="{{ route('admin.dishes.create', $restaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
+            </div>
             @if (empty($restaurant->dishes))
                 <p>Non ci sono piatti</p>
             @else
@@ -36,6 +39,25 @@
                             <p>{{ $dish->visibility ? 'Visible' : 'Hidden' }}</p>
                             <p>{{ $dish->vegan ? 'Yes' : 'No' }}</p>
                             <p> {{$dish->image}}</p>
+
+                            <a href="{{ route('admin.dishes.edit', $dish) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                            {{-- <a href="{{ route('admin.dishes.destroy', $dish) }}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a> --}}
+
+                            <form
+                              action="{{ route('admin.dishes.destroy', ['restaurant' => $restaurant->id, 'dish'=> $dish->id])}}"
+                              method="POST"
+                              class=""
+                            >
+                                @csrf
+                                @method('DELETE')
+                                <button
+                                  type="submit"
+                                  class="btn btn-danger"
+                                  onclick="return confirm('Sei sicuro di voler eliminare il piatto?')"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
                         </li>
                     @endforeach
                 </ul>

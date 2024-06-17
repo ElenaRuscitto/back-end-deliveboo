@@ -13,11 +13,11 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['Antipasti','Primi', 'Secondi', 'Contorni', 'Pizze', 'Panini', 'Insalate', 'Dolci' , 'Gelati',  'Bevande', 'Birre', 'Vini' ];
+        $categories = ['Antipasti','Primi', 'Secondi', 'Contorni', 'Pizze', 'Panini', 'Insalate', 'Dolci' , 'Gelati',  'Bevande', 'Birre', 'Vini', 'Sushi', 'Kebab'];
         foreach($categories as $category){
             $new_category = new Category();
             $new_category->name = $category;
             $new_category->save();
-         }
+        }
     }
 }

@@ -14,14 +14,14 @@ class Restaurant extends Model
         return $this->hasOne(User::class);
     }
     public function dishes(){
-        return $this->belongsTo(Dish::class);
+        return $this->hasMany(Dish::class);
     }
     public function types(){
         return $this->belongsToMany(Type::class);
     }
 
     public function getRestaurant(){
-        return $this->;
+        // return $this->;
     }
 
     protected $fillable = [
