@@ -20,8 +20,11 @@
 
         @include('admin.partials.header')
 
+        @include('admin.partials.aside')
+        <div class="content mb-5">
 
-        @yield('content')
+            @yield('content')
+        </div>
 
 
 
