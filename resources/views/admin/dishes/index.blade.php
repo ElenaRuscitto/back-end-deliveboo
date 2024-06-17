@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <h1>All Dishes</h1>
-         <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">Create Dish</a>
+        <h1 class="my-5">Piatti</h1>
+         <a href="{{ route('admin.dishes.create') }}" class="btn btn-primary">Aggiungi Piatto</a>
         <table class="table mt-3">
             <thead>
                 <tr>

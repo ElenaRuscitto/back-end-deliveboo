@@ -20,6 +20,10 @@ class Restaurant extends Model
         return $this->belongsToMany(Type::class);
     }
 
+    public function getRestaurant(){
+        return $this->;
+    }
+
     protected $fillable = [
         'user_id',
         'name',

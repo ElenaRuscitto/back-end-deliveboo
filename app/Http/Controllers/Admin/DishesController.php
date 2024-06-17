@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Dish;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DishRequest;
+use App\Models\Restaurant;
 
 class DishesController extends Controller
 {
@@ -14,8 +15,7 @@ class DishesController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
-        return view('admin.dishes.index', compact('dishes'));
+
     }
 
     /**
@@ -23,6 +23,7 @@ class DishesController extends Controller
      */
     public function create()
     {
+
          return view('admin.dishes.create');
     }
 
@@ -43,8 +44,9 @@ class DishesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dish $dish)
+    public function show(Restaurant $restaurant)
     {
+        dd($restaurant);
         //   return view('dishes.show', compact('dish'));
     }
 

@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantsController;
-
- //use App\Http\Controllers\Admin\DishesController;
+use App\Http\Controllers\Admin\DishesController;
 
 
 
@@ -34,11 +33,10 @@ Route::middleware(['auth', 'verified'])
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
 
-                   // Route::resource('/restaurants', RestaurantsController::class);
-                   // Route::resource('/dishes', DishesController::class);
-
                     Route::resource('/restaurants', RestaurantsController::class);
-                   
+                    Route::resource('/dishes', DishesController::class);
+
+
 
                 });
 

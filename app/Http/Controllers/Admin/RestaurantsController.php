@@ -66,9 +66,11 @@ class RestaurantsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $restaurant = Restaurant::with('dishes')->findOrFail($id);
+        return view('admin.restaurants.dishesRestaurant', compact('restaurant'));
+
     }
 
     /**
