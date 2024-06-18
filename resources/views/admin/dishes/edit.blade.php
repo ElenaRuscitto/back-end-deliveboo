@@ -16,7 +16,7 @@
         @method('PUT')
 
         <div class="form-group ">
-            <label for="name">Nome:</label>
+            <label for="name">Nome: (*)</label>
             <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $dish->name) }}" required minlength='3' maxlength='100'>
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group pt-3">
-            <label for="price">Prezzo:</label>
+            <label for="price">Prezzo: (*)</label>
             <input type="number" name="price" id="price" class="form-control" value="{{ old('price', $dish->price) }}" step="0.01" required min="1.00" max="99.99">
             @error('price')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -67,6 +67,10 @@
             @error('vegan')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+        </div>
+
+        <div>
+            <small>I campi contrassegnati con (*) sono obbligatori</small>
         </div>
 
         <button type="submit" class="btn btn-success mt-3">

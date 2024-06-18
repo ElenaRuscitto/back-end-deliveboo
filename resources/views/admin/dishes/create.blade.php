@@ -19,15 +19,15 @@
             @csrf
             <div class="form-group mt-3">
                 <label for="name">Nome (*)</label>
-                <input type="text" class="form-control" id="name" name="name" required minlength='3' maxlength='100'>
+                <input type="text" class="form-control" id="name" name="name" required minlength='3' maxlength='100' value="{{ old('name') }}">
             </div>
             <div class="form-group mt-3">
                 <label for="desc">Descrizione</label>
-                <textarea class="form-control" id="desc" name="desc"></textarea>
+                <textarea class="form-control" id="desc" name="desc">{{ old('desc') }}</textarea>
             </div>
             <div class="form-group mt-3">
                 <label for="price">Prezzo (*)</label>
-                <input type="number" class="form-control" id="price" name="price" step="0.01" required min="1.00" max="99.99">
+                <input type="number" class="form-control" id="price" name="price" step="0.01" required min="1.00" max="99.99" value="{{ old('price') }}">
             </div>
             <div class="form-group mt-3">
                 <label for="visibility">Visibilità (*)</label>
