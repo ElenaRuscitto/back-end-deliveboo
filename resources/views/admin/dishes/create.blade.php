@@ -27,7 +27,7 @@
             </div>
             <div class="form-group mt-3">
                 <label for="price">Prezzo</label>
-                <input type="number" class="form-control" id="price" name="price" step="0.01" required min="0" max="99.99">
+                <input type="number" class="form-control" id="price" name="price" step="0.01" required min="1.00" max="99.99">
             </div>
             <div class="form-group mt-3">
                 <label for="visibility">Visibilità</label>

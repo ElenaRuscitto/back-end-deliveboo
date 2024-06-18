@@ -17,7 +17,7 @@
 
         <div class="form-group ">
             <label for="name">Nome:</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $dish->name) }}" required>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $dish->name) }}" required minlength='3' maxlength='100'>
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -33,7 +33,7 @@
 
         <div class="form-group pt-3">
             <label for="price">Prezzo:</label>
-            <input type="text" name="price" id="price" class="form-control" value="{{ old('price', $dish->price) }}" required>
+            <input type="number" name="price" id="price" class="form-control" value="{{ old('price', $dish->price) }}" step="0.01" required min="1.00" max="99.99">
             @error('price')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
