@@ -13,6 +13,9 @@ body {
     .my-header {
         background-color: $third-color !important;
         z-index: 999;
+        position: fixed;
+        width: 100vw;
+        top: 0;
         .my-logo {
             color: orange !important;
         }
