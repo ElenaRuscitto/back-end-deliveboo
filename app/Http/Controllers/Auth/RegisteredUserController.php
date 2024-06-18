@@ -31,8 +31,8 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'surname' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string','min:3', 'max:255'],
+            'surname' => ['required', 'string','min:3', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'telephone' => ['nullable','size:10'],
@@ -40,7 +40,9 @@ class RegisteredUserController extends Controller
         [
             'name.required' => 'Il nome è un campo richiesto.',
             'name.max' => 'Il nome può avere un massimo di :max caratteri.',
+            'name.min' => 'Il nome deve avere un minimo di :min caratteri.',
             'surname.required' => 'Il cognome è un campo richiesto.',
+            'surname.min' => 'Il cognome deve avere un minimo di :min caratteri.',
             'surname.max' => 'Il cognome può avere un massimo di :max caratteri.',
             'email.required' => 'L\'email è un campo richiesto.',
             'email.email' => 'L\'email deve essere valida.',
