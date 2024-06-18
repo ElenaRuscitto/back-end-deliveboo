@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'telephone' => ['size:10'],
+            'telephone' => ['nullable','size:10'],
         ],
         [
             'name.required' => 'Il nome è un campo richiesto.',
