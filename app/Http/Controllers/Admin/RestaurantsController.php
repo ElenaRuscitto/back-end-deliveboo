@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Functions\Helper as Help;
 use App\Models\Restaurant;
 use App\Http\Requests\RestaurantRequest;
+use App\Models\Type;
 
 class RestaurantsController extends Controller
 {
@@ -23,15 +24,19 @@ class RestaurantsController extends Controller
         // Prendo il ristorante associato all'utente
         $restaurant = Restaurant::where('user_id', $user->id)->first();
 
+        // Prelevo tutti i tipi di ristoranti
+        $types = Type::all();
+
         // Controlla se l'utente ha un ristorante associato
         //TODO: dare possibilità di creazione se il ristorante non esiste
         if (!$restaurant) {
-            return view('admin.restaurants.create');
+            $types = Type::all();
+            return view('admin.restaurants.create',compact('types'));
         }
         //!Autorizzazione alla rotta
         $this->authorize('view', $restaurant);
         // Vado alla visualizzazione del ristorante associato all'user
-        return view('admin.restaurants.index', compact('restaurant', 'user'));
+        return view('admin.restaurants.index', compact('restaurant', 'user', 'types'));
     }
 
     /**
@@ -41,7 +46,9 @@ class RestaurantsController extends Controller
     {
         // ? Prendo l'user
         // $user = Auth::user();
-        return view('admin.restaurants.create');
+        $types = Type::all();
+        // dd($types);
+        return view('admin.restaurants.create', compact('types'));
     }
 
     /**
@@ -60,8 +67,11 @@ class RestaurantsController extends Controller
         $new_restaurant->fill($form_data);
         $new_restaurant->user_id = $user->id;
         $user->restaurant_id = $new_restaurant->id;
-
         $new_restaurant->save();
+        $new_restaurant->types()->attach($form_data['types']);
+
+
+
         return redirect()->route('admin.restaurants.index')->with('success', 'Ristorante aggiunto con successo!');
     }
 
@@ -84,7 +94,8 @@ class RestaurantsController extends Controller
     {
         //!Autorizzazione alla rotta
         $this->authorize('update', $restaurant);
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $types = Type::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'types'));
     }
 
     /**
