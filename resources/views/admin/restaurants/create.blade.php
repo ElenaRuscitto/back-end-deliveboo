@@ -59,7 +59,7 @@
                 <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo del ristorante (*)</label>
                     <input
-                      type="address"
+                      type="text"
                       class="form-control"
                       id="address"
                       value="{{ old('address') }}"
@@ -77,15 +77,15 @@
                 <div class="mb-3">
                     <label for="vat" class="form-label">P.IVA del Ristorante (*)</label>
                     <input
-                      type="vat"
+                      type="text"
                       class="form-control"
                       id="vat"
                       value="{{ old('vat') }}"
                       placeholder="P.Iva"
                       name="vat"
                       required
-                      min="11"
-                      max="11"
+                      minlength="11"
+                      maxlength="11"
                     >
                 </div>
             </div>
@@ -117,13 +117,4 @@
         </div>
     </form>
 </div>
-
-
-
-<!--
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
--->
-
-
 @endsection
