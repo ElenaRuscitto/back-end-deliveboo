@@ -19,5 +19,5 @@ class Dish extends Model
     }
 
 
-    protected $fillable=[ 'name', 'desc', 'price', 'visibility', 'image', 'vegan'];
+    protected $fillable=[ 'name', 'desc', 'price', 'visibility', 'image', 'original_image', 'vegan'];
 }

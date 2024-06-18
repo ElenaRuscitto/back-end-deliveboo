@@ -15,7 +15,7 @@
         </div>
         @endif
 
-        <form id="dish-form" action="{{ route('admin.dishes.store', $restaurant) }}" method="POST">
+        <form id="dish-form" action="{{ route('admin.dishes.store', $restaurant) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mt-3">
                 <label for="name">Nome (*)</label>
@@ -60,7 +60,9 @@
             <!--FIXME: cambiare input -->
             <div class="form-group mt-3">
                 <label for="image">Immagine</label>
-                <input type="text" class="form-control" id="image" name="image" maxlength="100">
+                <input type="file" class="form-control" id="image" name="image" onchange="showImage(event)">
+                <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $restaurant->image) }}"
+                  >
             </div>
             <div class="form-group mt-3">
                 <label for="vegan">Vegano (*)</label>
@@ -118,6 +120,17 @@
         // Aggiorniamo il prezzo
         price.value = priceConverted;
     });
+
+
+
+
+
+    function showImage(event){
+        const thumb = document.getElementById('thumb');
+        thumb.src = URL.createObjectURL(event.target.files[0]);
+
+    }
 </script>
+
 
 @endsection

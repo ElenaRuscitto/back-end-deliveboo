@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form id="dish-form" action="{{ route('admin.dishes.update', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" method="POST">
+    <form id="dish-form" action="{{ route('admin.dishes.update', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -52,7 +52,9 @@
 
         <div class="form-group pt-3">
             <label for="image">Immagine:</label>
-            <input type="text" name="image" id="image" class="form-control" value="{{ old('image', $dish->image) }}">
+            <input type="file" name="image" id="image" class="form-control" onchange="showImage(event)">
+            <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $restaurant->image) }}"
+                  >
             @error('image')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -90,6 +92,13 @@
         // Aggiorniamo il prezzo
         price.value = priceConverted;
     });
+
+
+    function showImage(event){
+        const thumb = document.getElementById('thumb');
+        thumb.src = URL.createObjectURL(event.target.files[0]);
+
+    }
 </script>
 
 @endsection

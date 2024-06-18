@@ -7,6 +7,8 @@ use App\Models\Dish;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DishRequest;
 use App\Models\Restaurant;
+use Illuminate\Support\Facades\Storage;
+// use App\Functions\Helper as Help;
 
 class DishesController extends Controller
 {
@@ -34,6 +36,23 @@ class DishesController extends Controller
     public function store(DishRequest $request, Restaurant $restaurant)
     {
         $form_data = $request->all();
+
+
+        // verifico l'esistenza della chiave 'image' in $form_data
+        if(array_key_exists('image', $form_data)) {
+            // salvo immagine nello storage e ottengo il percorso
+            $image_path = Storage::put('uploads', $form_data['image']);
+
+            $original_image = $request->file('image')->getClientOriginalName();
+
+            $form_data['image'] = $image_path;
+            $form_data['original_image'] = $original_image;
+
+        }
+
+
+
+
         $new_dish = new Dish();
         $new_dish -> fill($form_data);
 
