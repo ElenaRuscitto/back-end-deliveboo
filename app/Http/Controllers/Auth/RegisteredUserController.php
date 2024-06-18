@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'surname' => ['required', 'string','min:3', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'telephone' => ['nullable','size:10'],
+            'telephone' => ['nullable','size:10', 'unique:' .User::class],
         ],
         [
             'name.required' => 'Il nome è un campo richiesto.',
@@ -48,6 +48,8 @@ class RegisteredUserController extends Controller
             'email.email' => 'L\'email deve essere valida.',
             'email.max' => 'L\'email può avere un massimo di :max caratteri.',
             'email.unique' => 'L\'email è già utilizzata.',
+            'telephone.size' => 'Il numero di telefono deve essere valido',
+            'telephone.unique' => 'Il numero di telefono è già stato utilizzato',
         ]);
 
         $user = User::create([
