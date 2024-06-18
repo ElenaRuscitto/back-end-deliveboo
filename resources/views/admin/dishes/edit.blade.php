@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.dishes.update', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" method="POST">
+    <form id="dish-form" action="{{ route('admin.dishes.update', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -79,62 +79,17 @@
     </form>
 </div>
 
-<!--
-
 <script>
-    $(document).ready(function() {
-        $("form").validate({
-            rules: {
-                name: {
-                    required: true,
-                    maxlength: 100
-                },
-                desc: {
-                    required: false,
-                    maxlength: 255
-                },
-                price: {
-                    required: true,
-                    number: true,
-                    min: 0.01,
-                    max: 999.99
-                },
-                visibility: {
-                    required: true,
-                },
-                image: {
-                    required: false,
-                    maxlength: 100
-                },
-                vegan: {
-                    required: false,
-                }
-            },
-            messages: {
-                name: {
-                    required: "Il nome è obbligatorio",
-                    maxlength: "Il nome non può superare i 100 caratteri"
-                },
-                desc: {
-                    maxlength: "La descrizione non può superare i 255 caratteri"
-                },
-                price: {
-                    required: "Il prezzo è obbligatorio",
-                    max: "Il prezzo non può superare 999,99",
-                    min: "Il prezzo non può essere nullo"
-                },
-                visibility: {
-                    required: "La visibilità è obbligatoria",
-                },
-                image: {
-                    maxlength: "La lunghezza massima del nome del file è di 100 caratteri",
-                    /*filesize: "L'immagine non può superare i 2MB"
-                    extension: "Il file deve essere un'immagine (jpg, jpeg, png)"
-                } */
-                }
-            }
-        });
+    document.getElementByID('dish-form').addEventListener('submit', function (event){
 
+        // Prendo il valore del campo price
+        let price = document.getElementById('price');
+        let priceConverted = price.value;
+        // Sostituisco la virgola con il punto
+        priceConverted = priceConverted.replace(',', '.');
+        // Aggiorniamo il prezzo
+        price.value = priceConverted;
     });
-</script> -->
+</script>
+
 @endsection

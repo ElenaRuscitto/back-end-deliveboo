@@ -21,4 +21,5 @@ class Helper{
 
         return $slug;
     }
+
 }
