@@ -18,7 +18,7 @@
         <form action="{{ route('admin.dishes.store', $restaurant) }}" method="POST">
             @csrf
             <div class="form-group mt-3">
-                <label for="name">Nome</label>
+                <label for="name">Nome (*)</label>
                 <input type="text" class="form-control" id="name" name="name" required minlength='3' maxlength='100'>
             </div>
             <div class="form-group mt-3">
@@ -26,11 +26,11 @@
                 <textarea class="form-control" id="desc" name="desc"></textarea>
             </div>
             <div class="form-group mt-3">
-                <label for="price">Prezzo</label>
+                <label for="price">Prezzo (*)</label>
                 <input type="number" class="form-control" id="price" name="price" step="0.01" required min="1.00" max="99.99">
             </div>
             <div class="form-group mt-3">
-                <label for="visibility">Visibilità</label>
+                <label for="visibility">Visibilità (*)</label>
                 <div class="form-check">
                     <input
                       class="form-check-input"
@@ -63,7 +63,7 @@
                 <input type="text" class="form-control" id="image" name="image" maxlength="100">
             </div>
             <div class="form-group mt-3">
-                <label for="vegan">Vegano</label>
+                <label for="vegan">Vegano (*)</label>
                 <div class="form-check">
                     <input
                       class="form-check-input"
@@ -90,11 +90,20 @@
                       Si
                     </label>
                   </div>
+
             </div>
+
+            <div>
+                <small>I campi contrassegnati con (*) sono obbligatori</small>
+            </div>
+
             <button type="submit" class="btn btn-success mt-3">
                 <i class="fa-solid fa-floppy-disk"></i>
             </button>
         </form>
+
+
+
     </div>
 
     <!--

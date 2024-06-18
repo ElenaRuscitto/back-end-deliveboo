@@ -107,6 +107,10 @@
             {{--? /IMG --}}
         </div>
 
+        <div>
+            <small>I campi contrassegnati con (*) sono obbligatori</small>
+        </div>
+
         <div class="mt-3 d-flex justify-content-center">
             <button type="submit" class="btn btn-outline-success me-3">Crea</button>
             <button type="reset" class="btn btn-outline-danger">Cancella</button>
