@@ -12,10 +12,9 @@ body {
 
     .my-header {
         background-color: $third-color !important;
+        z-index: 999;
         .my-logo {
             color: orange !important;
-
         }
     }
-
 }

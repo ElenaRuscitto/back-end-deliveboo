@@ -3,6 +3,7 @@
     width: 200px;
     height: calc(100vh - 65px);
     position: fixed;
+    z-index: 998;
     top: 68px;
 
     background-color: $third-color;
