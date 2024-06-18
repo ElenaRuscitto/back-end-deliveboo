@@ -23,6 +23,7 @@ class DishesController extends Controller
      */
     public function create(Restaurant $restaurant)
     {
+        $this->authorize('view', $restaurant);
         // dd($restaurant);
         return view('admin.dishes.create', compact('restaurant'));
     }
@@ -57,6 +58,7 @@ class DishesController extends Controller
      */
     public function edit(Restaurant $restaurant,Dish $dish)
     {
+        $this->authorize('update', $restaurant);
         return view('admin.dishes.edit', compact('restaurant','dish'));
     }
 
@@ -77,6 +79,7 @@ class DishesController extends Controller
 
     public function destroy(Restaurant $restaurant,Dish $dish)
     {
+
          $dish->delete();
 
        return redirect()->route('admin.restaurants.index')

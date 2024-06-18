@@ -23,8 +23,8 @@ class RestaurantPolicy
      */
     public function view(User $user, Restaurant $restaurant)
     {
-        dump('User ID: ' . $user->id);
-        dump('Restaurant User ID: ' . $restaurant->user_id);
+        // dump('User ID: ' . $user->id);
+        // dump('Restaurant User ID: ' . $restaurant->user_id);
 
         return $user->id === $restaurant->user_id;
     }
