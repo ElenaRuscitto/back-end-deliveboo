@@ -15,7 +15,7 @@
         </div>
         @endif
 
-        <form action="{{ route('admin.dishes.store', $restaurant) }}" method="POST">
+        <form id="dish-form" action="{{ route('admin.dishes.store', $restaurant) }}" method="POST">
             @csrf
             <div class="form-group mt-3">
                 <label for="name">Nome (*)</label>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group mt-3">
                 <label for="price">Prezzo (*)</label>
-                <input type="number" class="form-control" id="price" name="price" step="0.01" required min="1.00" max="99.99" value="{{ old('price') }}">
+                <input id="price" type="number" class="form-control" name="price" step="0.01" required min="1.00" max="99.99" value="{{ old('price') }}">
             </div>
             <div class="form-group mt-3">
                 <label for="visibility">Visibilità (*)</label>
@@ -106,62 +106,18 @@
 
     </div>
 
-    <!--
-<script>
-    $(document).ready(function() {
-        $('#form-dishes').validate({
-            rules: {
-                name: {
-                    required: true,
-                    maxlength: 100
-                },
-                desc: {
-                    required: false,
-                    maxlength: 255
-                },
-                price: {
-                    required: true,
-                    number: true,
-                    min: 0.01,
-                    max: 999.99
-                },
-                visibility: {
-                    required: true,
-                },
-                image: {
-                    required: false,
-                    maxlength: 100
-                },
-                vegan: {
-                    required: false,
-                }
-            },
-            messages: {
-                name: {
-                    required: "Il nome è obbligatorio",
-                    maxlength: "Il nome non può superare i 100 caratteri"
-                },
-                desc: {
-                    maxlength: "La descrizione non può superare i 255 caratteri"
-                },
-                price: {
-                    required: "Il prezzo è obbligatorio",
-                    max: "Il prezzo non può superare 999,99",
-                    min: "Il prezzo non può essere nullo"
-                },
-                visibility: {
-                    required: "La visibilità è obbligatoria",
-                },
-                image: {
-                    maxlength: "La lunghezza massima del nome del file è di 100 caratteri",
-                    /*filesize: "L'immagine non può superare i 2MB"
-                    extension: "Il file deve essere un'immagine (jpg, jpeg, png)"
-                } */
-                }
-            }
-        });
 
+<script>
+    document.getElementByID('dish-form').addEventListener('submit', function (event){
+
+        // Prendo il valore del campo price
+        let price = document.getElementById('price');
+        let priceConverted = price.value;
+        // Sostituisco la virgola con il punto
+        priceConverted = priceConverted.replace(',', '.');
+        // Aggiorniamo il prezzo
+        price.value = priceConverted;
     });
-</script> -->
+</script>
 
 @endsection

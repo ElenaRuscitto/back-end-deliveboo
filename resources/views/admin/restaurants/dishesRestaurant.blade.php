@@ -17,8 +17,8 @@
                     <img src="{{$dish->image}}" class="card-img-top my-image" alt="...">
                     <div class="card-body">
                       <h5 class="card-title"> <span class="strong">Nome Piatto: </span>{{ $dish->name }}</h5>
-                      <h6 class="card-subtitle mb-2 text-body-secondary"><span class="strong">Prezzo: &euro; </span>{{ $dish->price }}</h6>
-                      <p class="card-text"><span class="strong">Indredienti/Descrizione: </span>{{ $dish->desc }}</p>
+                      <h6 class="card-subtitle mb-2 text-body-secondary"><span class="strong">Prezzo: &euro; </span>{{ number_format($dish->price, 2, ',', '.') }}</h6>
+                      <p class="card-text"><span class="strong">Ingredienti/Descrizione: </span>{{ $dish->desc }}</p>
                       <p class="card-text"><span class="strong">Visibilità: </span>{{ $dish->visibility ? 'Visible' : 'Hidden' }}</p>
                       <p class="card-text"><span class="strong">Vegano: </span>{{ $dish->vegan ? 'Yes' : 'No' }}</p>
 
