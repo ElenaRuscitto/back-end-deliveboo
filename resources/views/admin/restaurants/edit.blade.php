@@ -26,7 +26,8 @@
                       class="form-control"
                       id="name"
                       name="name"
-                      value="{{ $restaurant->name }}"
+                      value="{{ old('name', $restaurant->name ) }}"
+
                     >
                 </div>
             </div>
