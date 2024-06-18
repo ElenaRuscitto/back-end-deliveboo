@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Registrati') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('registrati') }}">
+                    <form id="registration-form" method="POST" action="{{ route('registrati') }}">
                         @csrf
 
                         <div class="mb-4 row">
@@ -56,7 +56,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }} (*)</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8" maxlength="16">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }} (*)</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" minlength="8" maxlength="16">
                             </div>
                         </div>
 
@@ -106,4 +106,23 @@
         </div>
     </div>
 </div>
+
+{{--? Script verifica lunghezza password --}}
+<script>
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        // Prendo i valori dei campi password
+        var password = document.getElementById('password').value;
+        var passwordConfirm = document.getElementById('password-confirm').value;
+
+        // Verifica che le password coincidano
+        if (password !== passwordConfirm) {
+            alert('Le password non coincidono.');
+            event.preventDefault(); // Blocca l'invio del form
+            return false;
+        }
+
+        return true; // Permetti l'invio del form
+    });
+</script>
+{{--? /Script verifica lunghezza password --}}
 @endsection
