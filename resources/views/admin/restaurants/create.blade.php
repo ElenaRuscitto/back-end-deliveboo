@@ -3,7 +3,6 @@
 
 <div class="container-xl my-5">
     <h1>Aggiungi il tuo Ristorante</h1>
-
     @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -13,9 +12,19 @@
                 </ul>
             </div>
     @endif
-    <form action="{{ route('admin.restaurants.store')}}" method="POST">
+    <form onsubmit="return validateCheckboxes()" action="{{ route('admin.restaurants.store')}}" method="POST">
         @csrf
 
+        <div class="mt-3">
+            <label>Tipo ristorante(*)</label>
+        </div>
+        <div class="btn-group mt-1" role="group" aria-label="Basic checkbox toggle button group">
+            @foreach ($types as $type)
+                <input name="types[]"type="checkbox" class="btn-check" id="{{$type->name}}" autocomplete="off" value="{{$type->id}}" @if (
+                    ($errors->any() && in_array($type->id, old('types', []))) )@endif >
+                <label class="btn btn-outline-primary btn-sm" for="{{$type->name}}">{{$type->name}}</label>
+            @endforeach
+        </div>
         <div class="row row-cols-2 mt-5">
             {{--? Nome --}}
             <div class="col">
@@ -117,4 +126,15 @@
         </div>
     </form>
 </div>
+<script>
+        function validateCheckboxes() {
+            var checkboxes = document.querySelectorAll('input[name="types[]"]');
+            var isChecked = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+            if (!isChecked) {
+                alert('Seleziona almeno una tipologia');
+                return false;
+            }
+            return true;
+        }
+</script>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Restaurant;
 use App\Http\Controllers\Admin\RestaurantsController;
+use App\Models\Type;
 
 class DashboardController extends Controller
 {
@@ -17,12 +18,15 @@ class DashboardController extends Controller
 
         // Prendo il ristorante associato all'utente
         $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $types = Type::all();
 
 
         if(!$restaurant) {
-            return view('admin.restaurants.create');
+            $types = Type::all();
+
+            return view('admin.restaurants.create', compact('types'));
         }
 
-        return view ('admin.restaurants.index', compact('restaurant', 'user'));
+        return view ('admin.restaurants.index', compact('restaurant', 'user', 'types'));
     }
 }
