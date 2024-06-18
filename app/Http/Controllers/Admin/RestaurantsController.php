@@ -16,6 +16,7 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
+
         // Controllo se l'utente è autenticato
         $user = Auth::user();
 
@@ -27,7 +28,8 @@ class RestaurantsController extends Controller
         if (!$restaurant) {
             return view('admin.restaurants.create');
         }
-
+        //!Autorizzazione alla rotta
+        $this->authorize('view', $restaurant);
         // Vado alla visualizzazione del ristorante associato all'user
         return view('admin.restaurants.index', compact('restaurant', 'user'));
     }
@@ -66,10 +68,12 @@ class RestaurantsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Restaurant $restaurant)
     {
-        $restaurant = Restaurant::with('dishes')->findOrFail($id);
-        return view('admin.restaurants.dishesRestaurant', compact('restaurant'));
+        // dd($restaurant);
+        $this->authorize('view', $restaurant);
+        $myRestaurant = Restaurant::with('dishes')->findOrFail($restaurant->id);
+        return view('admin.restaurants.dishesRestaurant', compact('myRestaurant'));
 
     }
 
@@ -78,6 +82,8 @@ class RestaurantsController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+        //!Autorizzazione alla rotta
+        $this->authorize('update', $restaurant);
         return view('admin.restaurants.edit', compact('restaurant'));
     }
 
@@ -86,6 +92,8 @@ class RestaurantsController extends Controller
      */
     public function update(RestaurantRequest $request, Restaurant $restaurant)
     {
+        //!Autorizzazione alla rotta
+        $this->authorize('update', $restaurant);
         $form_data = $request->all();
 
         if($form_data['name'] === $restaurant->name){

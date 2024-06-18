@@ -2,17 +2,17 @@
 
 @section('content')
     <div class="container">
-
+        {{-- @dd($restaurant) --}}
         <div class=" my-3">
 
             <div class="text-center">
-                <a href="{{ route('admin.dishes.create', $restaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
+                <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
             </div>
-            @if (empty($restaurant->dishes))
+            @if (empty($myRestaurant->dishes))
                 <p>Non ci sono piatti</p>
             @else
             <div class="d-flex justify-content-evenly flex-wrap m-5">
-                @foreach ($restaurant->dishes as $dish)
+                @foreach ($myRestaurant->dishes as $dish)
                 <div class="card text-center my-card m-2" style="width: 18rem;">
                     <img src="{{$dish->image}}" class="card-img-top my-image" alt="...">
                     <div class="card-body">
@@ -23,9 +23,9 @@
                       <p class="card-text"><span class="strong">Vegano: </span>{{ $dish->vegan ? 'Yes' : 'No' }}</p>
 
                       <div class="d-flex justify-content-center">
-                        <a href="{{ route('admin.dishes.edit', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{{ route('admin.dishes.edit', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
                         <form
-                          action="{{ route('admin.dishes.destroy', ['restaurant' => $restaurant->id, 'dish'=> $dish->id])}}"
+                          action="{{ route('admin.dishes.destroy', ['restaurant' => $myRestaurant->id, 'dish'=> $dish->id])}}"
                           method="POST"
                           class="mx-2"
                         >

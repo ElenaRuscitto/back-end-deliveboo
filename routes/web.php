@@ -32,7 +32,7 @@ Route::middleware(['auth', 'verified'])
                     // tutte le rotte protette da auth
                     Route::get('/',[DashboardController::class, 'index'])->name('home');
                     Route::resource('/restaurants', RestaurantsController::class);
-
+                    // Route::resource('restaurants.dishes', DishesController::class);
                     //! Rotta di creazione e salvataggio piatti
                     Route::get('/restaurants/{restaurant}/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
                     Route::post('/restaurants/{restaurant}/dishes', [DishesController::class, 'store'])->name('dishes.store');
