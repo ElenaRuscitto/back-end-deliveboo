@@ -88,11 +88,23 @@ class DishesController extends Controller
     {
 
         $form_data = $request->all();
+        // verifico l'esistenza della chiave 'image' in $form_data
+        if(array_key_exists('image', $form_data)) {
+           // salvo immagine nello storage e ottengo il percorso
+           $image_path = Storage::put('uploads', $form_data['image']);
+
+           $original_image = $request->file('image')->getClientOriginalName();
+
+           $form_data['image'] = $image_path;
+           $form_data['original_image'] = $original_image;
+
+       }
         $dish -> update($form_data);
 
         // Aggiorna il prodotto con i dati validati
         $dish->update($request->all());
         // Reindirizza alla pagina di modifica con un messaggio di successo
+
         return redirect()->route('admin.restaurants.index', compact('restaurant' ))->with('success', 'Piatto aggiornato');
     }
 
