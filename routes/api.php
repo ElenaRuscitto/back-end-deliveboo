@@ -16,8 +16,11 @@ use App\Http\Controllers\Api\RestaurantController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+//  Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//      return $request->user();
+//  });
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
+Route::get('/types', [RestaurantController::class, 'getTypes']);
+Route::get('/restaurant-info/{id}', [RestaurantController::class, 'getRestaurantInfo']);
+Route::get('/restaurants/{type}', [RestaurantController::class, 'getRestaurantsByType']);
