@@ -28,8 +28,9 @@
                     @foreach ($myRestaurant->dishes as $dish)
                     <tr>
                         <td>
-                            <img class="img-fluid w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $dish->image) }} "
-                            >
+
+                            {{-- <img class="img-fluid w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $dish->image) }} "
+                            > --}}
                             {{-- <img class="img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2hgBGgFmVjv_hcAP3vcihsLyFMEQB-S8t2Q&s" alt=""> --}}
                         </td>
                         <td>{{ $dish->name }}</td>

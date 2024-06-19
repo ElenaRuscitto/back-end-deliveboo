@@ -110,7 +110,9 @@
                       value="{{ old('image') }}"
                       placeholder="Immagine"
                       name="image"
+
                     >
+
                 </div>
             </div>
             {{--? /IMG --}}
@@ -136,5 +138,7 @@
             }
             return true;
         }
+
+
 </script>
 @endsection
