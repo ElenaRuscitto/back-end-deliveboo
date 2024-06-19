@@ -63,6 +63,7 @@
                 <input type="file" class="form-control" id="image" name="image" onchange="showImage(event)">
                 <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $restaurant->image) }}"
                   >
+                  {{-- <small>{{ $dish->original_image }}</small> --}}
             </div>
             <div class="form-group mt-3">
                 <label for="vegan">Vegano (*)</label>
