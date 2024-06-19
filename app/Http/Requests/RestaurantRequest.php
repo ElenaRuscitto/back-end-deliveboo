@@ -29,6 +29,7 @@ class RestaurantRequest extends FormRequest
             // 'email' => 'required|email|max:255|unique:restaurants,email' . $restaurantId,
             'address' => 'required|min:5|max:100|unique:restaurants',
             'vat' => 'required|size:11|unique:restaurants',
+            'desc' => 'max:500',
             // 'email' => 'required|email|max:255|unique:restaurants',
             // 'address' => 'required|min:5|max:100|unique:restaurants',
             // 'vat' => 'required|size:10|unique:restaurant',
@@ -56,6 +57,8 @@ class RestaurantRequest extends FormRequest
             'vat.required' => 'La P.Iva è obbligatoria.',
             'vat.size' => 'La P.Iva deve avere :size caratteri.',
             'vat.unique' => 'La P.Iva è già utilizzata.',
+            // ? Descrizione
+            'desc.max' => 'La descrizione può avere massimo :max caratteri.'
         ];
     }
 }
