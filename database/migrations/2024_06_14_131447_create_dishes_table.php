@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 5,2);
             $table->boolean('visibility')->default(true);
             $table->string('image',100)->nullable();
+            $table->string('original_image')->nullable();
             $table->boolean('vegan')->nullable()->default(false);
             $table->timestamps();
         });
