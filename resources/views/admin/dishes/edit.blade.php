@@ -55,6 +55,7 @@
             <input type="file" name="image" id="image" class="form-control" onchange="showImage(event)">
             <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $restaurant->image) }}"
                   >
+                  {{-- <small>{{ $dish->original_image }}</small> --}}
             @error('image')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
