@@ -32,5 +32,6 @@ class Restaurant extends Model
         'address',
         'vat',
         'image',
+        'desc'
     ];
 }
