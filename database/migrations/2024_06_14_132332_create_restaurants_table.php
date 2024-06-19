@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address', 100)->unique();
             $table->string('vat', 11)->unique();
             $table->string('image')->nullable();
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }

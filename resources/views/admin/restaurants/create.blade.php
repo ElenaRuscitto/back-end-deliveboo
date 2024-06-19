@@ -99,6 +99,19 @@
                 </div>
             </div>
             {{--? /P.Iva --}}
+            {{--? Descrizione --}}
+            <div class="col">
+                <label for="desc" class="form-label">Descrizione</label>
+                <textarea class="form-control col-11 mb-3" class=""
+                          id="desc"
+                          value="{{ old('desc') }}"
+                          placeholder="desc"
+                          name="desc"
+                          minlength="5"
+                          maxlength="500">
+                </textarea>
+            </div>
+            {{--? /Descrizione --}}
             {{--? IMG --}}
             <div class="col">
                 <div class="mb-3">
