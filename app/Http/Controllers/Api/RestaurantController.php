@@ -14,21 +14,21 @@ class RestaurantController extends Controller
          $restaurants = Restaurant::with('types')->get();
          $response = [
             'total_results' => $restaurants->count(),
-            'Restaurants' => $restaurants
+            'restaurants' => $restaurants
         ];
 
         return response()->json($response);
-        //  return response()->json($restaurants);
+
     }
     public function getTypes(){
         $types = Type::all();
         $response = [
             'total_results' => $types->count(),
-            'Types' => $types
+            'types' => $types
         ];
 
         return response()->json($response);
-        // return response()->json($types);
+
     }
     public function getRestaurantInfo($id){
         $restaurant = Restaurant::where('id', $id)->with('types', 'dishes')->first();
