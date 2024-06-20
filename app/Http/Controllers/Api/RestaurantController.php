@@ -12,11 +12,23 @@ class RestaurantController extends Controller
 {
     public function index(){
          $restaurants = Restaurant::with('types')->get();
-         return response()->json($restaurants);
+         $response = [
+            'total_results' => $restaurants->count(),
+            'Restaurants' => $restaurants
+        ];
+
+        return response()->json($response);
+        //  return response()->json($restaurants);
     }
     public function getTypes(){
         $types = Type::all();
-        return response()->json($types);
+        $response = [
+            'total_results' => $types->count(),
+            'Types' => $types
+        ];
+
+        return response()->json($response);
+        // return response()->json($types);
     }
     public function getRestaurantInfo($id){
         $restaurant = Restaurant::where('id', $id)->with('types', 'dishes')->first();
@@ -26,11 +38,34 @@ class RestaurantController extends Controller
     {
         $typeModel = Type::where('name', $type)->first();
 
-
-
         $restaurants = $typeModel->restaurants()->with('types')->get();
 
-        return response()->json($restaurants);
+        $response = [
+            'total_results' => $restaurants->count(),
+            'restaurants' => $restaurants
+        ];
+
+        return response()->json($response);
+    }
+    public function getSearchRestaurants($search)
+    {
+        $typeModel = Type::where('name', 'like', '%' . $search . '%')->first();
+        $restaurantQuery = Restaurant::where('name', 'like', '%' . $search . '%')->with('types', 'dishes');
+
+        if ($typeModel) {
+            $restaurantsByType = $typeModel->restaurants()->with('types', 'dishes')->get();
+        }else {
+            $restaurantsByType = collect();
+        }
+            $restaurantsByName = $restaurantQuery->get();
+            $restaurants = $restaurantsByType->merge($restaurantsByName)->unique('id');
+
+            $response = [
+                'total_results' => $restaurants->count(),
+                'restaurants' => $restaurants
+            ];
+
+        return response()->json($response);
     }
 
 }
