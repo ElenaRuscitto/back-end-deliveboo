@@ -23,5 +23,5 @@ use App\Http\Controllers\Api\RestaurantController;
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 Route::get('/types', [RestaurantController::class, 'getTypes']);
 Route::get('/restaurant-info/{id}', [RestaurantController::class, 'getRestaurantInfo']);
-Route::get('/restaurants', [RestaurantController::class, 'getRestaurantsByType']);
+Route::get('/restaurants/type', [RestaurantController::class, 'getRestaurantsByType']);
 Route::get('/search/{search}', [RestaurantController::class, 'getSearchRestaurants']);
