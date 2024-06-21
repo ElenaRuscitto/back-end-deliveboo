@@ -25,6 +25,9 @@
                 <label class="btn btn-outline-primary btn-sm" for="{{$type->name}}">{{$type->name}}</label>
             @endforeach
         </div>
+        <span class="invalid-feedback" role="alert" id="types-error" style="display:none;">
+            <strong>Seleziona almeno una tipologia.</strong>
+        </span>
         <div class="row row-cols-2 mt-5">
             {{--? Nome --}}
             <div class="col">
@@ -142,16 +145,16 @@
     </form>
 </div>
 <script>
-        function validateCheckboxes() {
-            var checkboxes = document.querySelectorAll('input[name="types[]"]');
-            var isChecked = Array.prototype.slice.call(checkboxes).some(x => x.checked);
-            if (!isChecked) {
-                alert('Seleziona almeno una tipologia');
-                return false;
-            }
-            return true;
+    function validateCheckboxes() {
+        const checkboxes = document.querySelectorAll('input[name="types[]"]');
+        const isChecked = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+        const typesError = document.getElementById('types-error');
+        if (!isChecked) {
+            typesError.style.display = 'block';
+            return false;
         }
-
-
+        typesError.style.display = 'none';
+        return true;
+    }
 </script>
 @endsection

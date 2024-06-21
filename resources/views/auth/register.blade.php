@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }} (<span class="text-danger">*</span>)</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }} (*)</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus minlength='3' maxlength='100'>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="mb-4 row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome (<span class="text-danger">*</span>)</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome (*)</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus minlength='3' maxlength='100'>
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }} (<span class="text-danger">*</span>)</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo E-Mail') }} (*)</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }} (<span class="text-danger">*</span>)</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }} (*)</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength="8" maxlength="16">
@@ -67,10 +67,13 @@
                         </div>
 
                         <div class="mb-4 row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }} (<span class="text-danger">*</span>)</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password') }} (*)</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" minlength="8" maxlength="16">
+                                <span class="invalid-feedback" role="alert" id="password-error" style="display:none;">
+                                    <strong>Le password non coincidono.</strong>
+                                </span>
                             </div>
                         </div>
 
@@ -98,7 +101,7 @@
                         </div>
 
                         <div>
-                            <small class="text-danger">I campi contrassegnati con (*) sono obbligatori</small>
+                            <small>I campi contrassegnati con (*) sono obbligatori</small>
                         </div>
                     </form>
                 </div>
@@ -111,12 +114,13 @@
 <script>
     document.getElementById('registration-form').addEventListener('submit', function(event) {
         // Prendo i valori dei campi password
-        var password = document.getElementById('password').value;
-        var passwordConfirm = document.getElementById('password-confirm').value;
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('password-confirm').value;
 
         // Verifica che le password coincidano
         if (password !== passwordConfirm) {
-            alert('Le password non coincidono.');
+            const passwordError = document.getElementById('password-error');
+            passwordError.style.display = 'block';
             event.preventDefault(); // Blocca l'invio del form
             return false;
         }
