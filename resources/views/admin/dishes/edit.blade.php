@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form id="dish-form" action="{{ route('admin.dishes.update', ['restaurant' => $restaurant, 'dish'=> $dish]) }}" method="POST" enctype="multipart/form-data">
+    <form id="dish-form" action="{{ route('admin.dishes.update', ['dish'=> $dish]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -53,7 +53,7 @@
         <div class="form-group pt-3">
             <label for="image">Immagine:</label>
             <input type="file" name="image" id="image" class="form-control" onchange="showImage(event)">
-            <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $restaurant->image) }}"
+            <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $dish->image) }}"
                   >
                   {{-- <small>{{ $dish->original_image }}</small> --}}
             @error('image')

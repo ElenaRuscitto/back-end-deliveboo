@@ -23,17 +23,27 @@ class DishesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Restaurant $restaurant)
+    public function create()
     {
-        $this->authorize('view', $restaurant);
+        // dd(session('restaurant_id'));
+        // $this->authorize('view', $restaurant);
         // dd($restaurant);
-        return view('admin.dishes.create', compact('restaurant'));
+        return view('admin.dishes.create');
     }
+    //  */
+    // public function create(Restaurant $restaurant)
+    // {
+    //     dd(session('restaurant_id'));
+
+    //     $this->authorize('view', $restaurant);
+    //     // dd($restaurant);
+    //     return view('admin.dishes.create', compact('restaurant'));
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(DishRequest $request, Restaurant $restaurant)
+    public function store(DishRequest $request)
     {
         $form_data = $request->all();
 
@@ -56,35 +66,43 @@ class DishesController extends Controller
         $new_dish = new Dish();
         $new_dish -> fill($form_data);
 
-        $new_dish->restaurant_id = $restaurant->id;
+        $new_dish->restaurant_id = session('restaurant_id');
         // dd($new_dish);
         $new_dish-> save();
 
-        return redirect()->route('admin.show', ['restaurant' => $restaurant->id])->with('success', 'Piatto aggiunto');
+        return redirect()->route('admin.show')->with('success', 'Piatto aggiunto');
+        // return redirect()->route('admin.show', ['restaurant' => $restaurant->id])->with('success', 'Piatto aggiunto');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Restaurant $restaurant)
+    public function show()
     {
-        dd($restaurant);
-        //   return view('dishes.show', compact('dish'));
+
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Restaurant $restaurant,Dish $dish)
+    public function edit(Dish $dish)
     {
+        $restaurantId = session('restaurant_id');
+        $restaurant = Restaurant::with('dishes')->findOrFail($restaurantId);
+
+        if (!$restaurant->dishes->contains($dish->id)) {
+            abort(404, 'Pagina non trovata');
+        }
+
         $this->authorize('update', $restaurant);
-        return view('admin.dishes.edit', compact('restaurant','dish'));
+        return view('admin.dishes.edit', compact('dish'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(DishRequest $request, Restaurant $restaurant, Dish $dish)
+    public function update(DishRequest $request, Dish $dish)
     {
 
         $form_data = $request->all();
@@ -98,17 +116,17 @@ class DishesController extends Controller
            $form_data['image'] = $image_path;
            $form_data['original_image'] = $original_image;
 
-       }
+        }
         $dish -> update($form_data);
 
         // Aggiorna il prodotto con i dati validati
         $dish->update($request->all());
         // Reindirizza alla pagina di modifica con un messaggio di successo
 
-        return redirect()->route('admin.show', compact('restaurant' ))->with('success', 'Piatto aggiornato');
+        return redirect()->route('admin.show')->with('success', 'Piatto aggiornato');
     }
 
-    public function destroy(Restaurant $restaurant,Dish $dish)
+    public function destroy(Dish $dish)
     {
 
          $dish->delete();
