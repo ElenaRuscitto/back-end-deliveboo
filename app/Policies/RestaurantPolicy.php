@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+
 class RestaurantPolicy
 {
     use HandlesAuthorization;
@@ -25,8 +26,10 @@ class RestaurantPolicy
     {
         // dump('User ID: ' . $user->id);
         // dump('Restaurant User ID: ' . $restaurant->user_id);
-
-        return $user->id === $restaurant->user_id;
+        if($user->id !== $restaurant->user_id){
+            abort(404);
+        }
+        return true;
     }
 
     /**
@@ -42,7 +45,10 @@ class RestaurantPolicy
      */
     public function update(User $user, Restaurant $restaurant)
     {
-        return $user->id === $restaurant->user_id;
+        if($user->id !== $restaurant->user_id){
+            abort(404);
+        }
+        return true;
     }
 
     /**
@@ -50,7 +56,10 @@ class RestaurantPolicy
      */
     public function delete(User $user, Restaurant $restaurant)
     {
-        return $user->id === $restaurant->user_id;
+        if($user->id !== $restaurant->user_id){
+            abort(404);
+        }
+        return true;
     }
 
     /**
