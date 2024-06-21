@@ -48,7 +48,7 @@ class RestaurantController extends Controller
         if(empty($types) || (count($types)=== 1 && $types[0] === '')){
             return response()->json([
                 'total_result' => 0,
-                'restaurant' => []
+                'restaurants' => []
             ]);
         }
 
@@ -59,7 +59,7 @@ class RestaurantController extends Controller
 
         $response = [
             'total_result' => $restaurants->count(),
-            'restaurant' => $restaurants
+            'restaurants' => $restaurants
         ];
 
         return response()->json($response);
