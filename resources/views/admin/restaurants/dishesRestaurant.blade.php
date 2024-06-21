@@ -50,7 +50,7 @@
                             @if($dish->vegan)
                             <i class="fa-solid fa-leaf green"></i>
                         @else
-                            <i class="fa-solid fa-cow red"></i>
+                            <i class="fa-solid fa-xmark red"></i>
                         @endif
                         </td>
                         <td class="pt-4 text-center">

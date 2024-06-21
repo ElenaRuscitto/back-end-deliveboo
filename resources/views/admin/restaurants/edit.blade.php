@@ -20,7 +20,7 @@
             {{--? Nome --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nome Del Ristorante (*)</label>
+                    <label for="name" class="form-label">Nome Del Ristorante (<span class="text-danger">*</span>)</label>
                     <input
                       type="text"
                       class="form-control"
@@ -35,7 +35,7 @@
             {{--? Email --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Indirizzo Email (*)</label>
+                    <label for="email" class="form-label">Indirizzo Email (<span class="text-danger">*</span>)</label>
                     <input
                       type="email"
                       class="form-control"
@@ -50,7 +50,7 @@
             {{--? Indirizzo --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="address" class="form-label">Indirizzo del ristorante (*)</label>
+                    <label for="address" class="form-label">Indirizzo del ristorante (<span class="text-danger">*</span>)</label>
                     <input
                       type="address"
                       class="form-control"
@@ -64,7 +64,7 @@
             {{--? P.IVA --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="vat" class="form-label">P.IVA del Ristorante (*)</label>
+                    <label for="vat" class="form-label">P.IVA del Ristorante (<span class="text-danger">*</span>)</label>
                     <input
                       type="vat"
                       class="form-control"
