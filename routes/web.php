@@ -40,15 +40,15 @@ Route::middleware(['auth', 'verified'])
                     // Route::delete('/destroy', [RestaurantsController::class, 'destroy'])->name('destroy');
                     // Route::resource('restaurants.dishes', DishesController::class);
                     //! Rotta di creazione e salvataggio piatti
-                    Route::get('/restaurants/{restaurant}/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
-                    Route::post('/restaurants/{restaurant}/dishes', [DishesController::class, 'store'])->name('dishes.store');
+                    Route::get('/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
+                    Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
 
                     //? Rotta di Edit per il piatto
-                    Route::get('/restaurants/{restaurant}/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
-                    Route::put('/restaurants/{restaurant}/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');
+                    Route::get('/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
+                    Route::put('/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');
 
                     //! Rotta per il delete piatti
-                    Route::delete('/restaurants/{restaurant}/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
+                    Route::delete('/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
                 });
 
 Route::middleware('auth')->group(function () {
