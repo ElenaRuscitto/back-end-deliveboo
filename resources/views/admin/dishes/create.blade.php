@@ -15,7 +15,7 @@
         </div>
         @endif
 
-        <form id="dish-form" action="{{ route('admin.dishes.store', $restaurant) }}" method="POST" enctype="multipart/form-data">
+        <form id="dish-form" action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mt-3">
                 <label for="name">Nome (<span class="text-danger">*</span>)</label>
@@ -61,7 +61,7 @@
             <div class="form-group mt-3">
                 <label for="image">Immagine</label>
                 <input type="file" class="form-control" id="image" name="image" onchange="showImage(event)">
-                <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' . $restaurant->image) }}"
+                <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' ) }}"
                   >
                   {{-- <small>{{ $dish->original_image }}</small> --}}
             </div>
