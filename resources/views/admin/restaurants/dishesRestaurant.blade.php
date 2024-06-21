@@ -20,13 +20,13 @@
                         <th class="ps-3">Ingredienti/Descrizione</th>
                         <th class="text-center">Visibilità</th>
                         <th class="text-center">Vegano</th>
-                        <th class="ps-5 text-center">Azioni</th>
+                        <th class="ps-4 text-center">Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($myRestaurant->dishes as $dish)
                     <tr>
-                        <td class="pt-4 ps-4  text-center">
+                        <td class="pt-4  text-center">
 
                             @if(!isset($dish->original_image))
                                 <i class="fa-solid fa-xmark red"></i>
