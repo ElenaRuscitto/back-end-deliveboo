@@ -10,9 +10,10 @@ use App\Models\Dish;
 
 class RestaurantController extends Controller
 {
+    //? Mi Restituisce tutti i ristoranti
     public function index(){
-         $restaurants = Restaurant::with('types')->get();
-         $response = [
+        $restaurants = Restaurant::with('types')->get();
+        $response = [
             'total_results' => $restaurants->count(),
             'restaurants' => $restaurants
         ];
@@ -20,6 +21,8 @@ class RestaurantController extends Controller
         return response()->json($response);
 
     }
+
+//? Mi Restituisce tutti i tipi di ristorante
     public function getTypes(){
         $types = Type::all();
         $response = [
@@ -30,23 +33,39 @@ class RestaurantController extends Controller
         return response()->json($response);
 
     }
+
+//? Mi Restituisce tutte le info del ristorante per id
     public function getRestaurantInfo($id){
         $restaurant = Restaurant::where('id', $id)->with('types', 'dishes')->first();
         return response()->json($restaurant);
     }
-    public function getRestaurantsByType($type)
-    {
-        $typeModel = Type::where('name', $type)->first();
 
-        $restaurants = $typeModel->restaurants()->with('types')->get();
+    //? Mi Restituisce tutti i ristoranti filtrati per tipo
+    public function getRestaurantsByType(Request $request)
+    {
+        $types = explode(',', $request->input('types', ''));
+
+        if(empty($types) || (count($types)=== 1 && $types[0] === '')){
+            return response()->json([
+                'total_result' => 0,
+                'restaurant' => []
+            ]);
+        }
+
+        //* Faccio la chiamata al db per i ristoranti che appartengono a questi tipi
+        $restaurants = Restaurant::whereHas('types', function($query) use ($types){
+            $query->whereIn('name', $types);
+        }, '=', count($types))->with('types')->get();
 
         $response = [
-            'total_results' => $restaurants->count(),
-            'restaurants' => $restaurants
+            'total_result' => $restaurants->count(),
+            'restaurant' => $restaurants
         ];
 
         return response()->json($response);
     }
+
+    //? Mi Restituisce tutti i ristoranti che ho cercato con la search bar
     public function getSearchRestaurants($search)
     {
         $typeModel = Type::where('name', 'like', '%' . $search . '%')->first();
