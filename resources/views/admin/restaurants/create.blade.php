@@ -16,7 +16,7 @@
         @csrf
 
         <div class="mt-3">
-            <label>Tipo ristorante(*)</label>
+            <label>Tipo ristorante (<span class="text-danger">*</span>)</label>
         </div>
         <div class="btn-group mt-1" role="group" aria-label="Basic checkbox toggle button group">
             @foreach ($types as $type)
@@ -29,7 +29,7 @@
             {{--? Nome --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nome Del Ristorante (*)</label>
+                    <label for="name" class="form-label">Nome Del Ristorante (<span class="text-danger">*</span>)</label>
                     <input
                       type="text"
                       class="form-control"
@@ -47,7 +47,7 @@
             {{--? Email --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Indirizzo Email (*)</label>
+                    <label for="email" class="form-label">Indirizzo Email (<span class="text-danger">*</span>)</label>
                     <input
                       type="email"
                       class="form-control"
@@ -66,7 +66,7 @@
             {{--? Indirizzo --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="address" class="form-label">Indirizzo del ristorante (*)</label>
+                    <label for="address" class="form-label">Indirizzo del ristorante (<span class="text-danger">*</span>)</label>
                     <input
                       type="text"
                       class="form-control"
@@ -84,7 +84,7 @@
             {{--? P.IVA --}}
             <div class="col">
                 <div class="mb-3">
-                    <label for="vat" class="form-label">P.IVA del Ristorante (*)</label>
+                    <label for="vat" class="form-label">P.IVA del Ristorante (<span class="text-danger">*</span>)</label>
                     <input
                       type="text"
                       class="form-control"
@@ -132,7 +132,7 @@
         </div>
 
         <div>
-            <small>I campi contrassegnati con (*) sono obbligatori</small>
+            <small class="text-danger">I campi contrassegnati con (*) sono obbligatori</small>
         </div>
 
         <div class="mt-3 d-flex justify-content-center">
