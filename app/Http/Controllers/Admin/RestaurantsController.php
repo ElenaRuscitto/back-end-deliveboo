@@ -9,7 +9,6 @@ use App\Functions\Helper as Help;
 use App\Models\Restaurant;
 use App\Http\Requests\RestaurantRequest;
 use App\Models\Type;
-
 class RestaurantsController extends Controller
 {
     /**
@@ -23,6 +22,10 @@ class RestaurantsController extends Controller
 
         // Prendo il ristorante associato all'utente
         $restaurant = Restaurant::where('user_id', $user->id)->first();
+        if($restaurant != null){
+            session(['restaurant_id' => $restaurant->id]);
+
+        }
 
         // Prelevo tutti i tipi di ristoranti
         $types = Type::all();
@@ -72,20 +75,21 @@ class RestaurantsController extends Controller
 
 
 
-        return redirect()->route('admin.restaurants.index')->with('success', 'Ristorante aggiunto con successo!');
+        return redirect()->route('admin.home')->with('success', 'Ristorante aggiunto con successo!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Restaurant $restaurant)
+    public function show()
     {
-        // dd($restaurant);
-        $this->authorize('view', $restaurant);
-        $myRestaurant = Restaurant::with('dishes')->findOrFail($restaurant->id);
+        $restaurantId = session('restaurant_id');
+        $myRestaurant = Restaurant::with('dishes')->findOrFail($restaurantId);
+        $this->authorize('view', $myRestaurant);
         return view('admin.restaurants.dishesRestaurant', compact('myRestaurant'));
-
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

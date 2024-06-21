@@ -60,7 +60,7 @@ class DishesController extends Controller
         // dd($new_dish);
         $new_dish-> save();
 
-        return redirect()->route('admin.restaurants.index', ['restaurant' => $restaurant->id])->with('success', 'Piatto aggiunto');
+        return redirect()->route('admin.show', ['restaurant' => $restaurant->id])->with('success', 'Piatto aggiunto');
     }
 
     /**
@@ -105,7 +105,7 @@ class DishesController extends Controller
         $dish->update($request->all());
         // Reindirizza alla pagina di modifica con un messaggio di successo
 
-        return redirect()->route('admin.restaurants.index', compact('restaurant' ))->with('success', 'Piatto aggiornato');
+        return redirect()->route('admin.show', compact('restaurant' ))->with('success', 'Piatto aggiornato');
     }
 
     public function destroy(Restaurant $restaurant,Dish $dish)
@@ -113,7 +113,7 @@ class DishesController extends Controller
 
          $dish->delete();
 
-       return redirect()->route('admin.restaurants.index')
+       return redirect()->route('admin.show')
         ->with('success', 'Piatto eliminato con successo.');
     }
 }
