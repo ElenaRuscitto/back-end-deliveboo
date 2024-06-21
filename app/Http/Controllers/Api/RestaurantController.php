@@ -34,18 +34,32 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::where('id', $id)->with('types', 'dishes')->first();
         return response()->json($restaurant);
     }
-    public function getRestaurantsByType($type)
+    public function getRestaurantsByType(Request $request)
     {
-        $typeModel = Type::where('name', $type)->first();
+        $types = explode(',', $request->input('types', ''));
 
-        $restaurants = $typeModel->restaurants()->with('types')->get();
+
+        // Faccio la chiamata al db per i ristoranti che appartengono a questi tipi
+        $restaurant = Restaurant::whereHas('types', function($query) use ($types){
+            $query->whereIn('name', $types);
+        })->with('types')->get();
 
         $response = [
-            'total_results' => $restaurants->count(),
-            'restaurants' => $restaurants
+            'total_result' => $restaurant->count(),
+            'restaurant' => $restaurant
         ];
 
         return response()->json($response);
+        // $typeModel = Type::where('name', $type)->first();
+
+        // $restaurants = $typeModel->restaurants()->with('types')->get();
+
+        // $response = [
+        //     'total_results' => $restaurants->count(),
+        //     'restaurants' => $restaurants
+        // ];
+
+        // return response()->json($response);
     }
     public function getSearchRestaurants($search)
     {
