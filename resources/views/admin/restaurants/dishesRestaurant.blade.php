@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         {{-- @dd($restaurant) --}}
-        <div class=" my-3">
+        <div class=" my-3 box-content table-responsive-xxl w-100">
 
             <div class="text-center">
                 <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
@@ -14,19 +14,19 @@
             <table class="table table-striped m-5">
                 <thead>
                     <tr>
-                        <th>Immagine</th>
-                        <th>Nome Piatto</th>
-                        <th>Prezzo</th>
-                        <th>Ingredienti/Descrizione</th>
-                        <th>Visibilità</th>
-                        <th>Vegano</th>
-                        <th class="ps-5">Azioni</th>
+                        <th class="text-center">Immagine</th>
+                        <th class="text-center">Nome Piatto</th>
+                        <th class="text-center">Prezzo</th>
+                        <th class="ps-3">Ingredienti/Descrizione</th>
+                        <th class="text-center">Visibilità</th>
+                        <th class="text-center">Vegano</th>
+                        <th class="ps-5 text-center">Azioni</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($myRestaurant->dishes as $dish)
                     <tr>
-                        <td class="pt-4 ps-4">
+                        <td class="pt-4 ps-4  text-center">
 
                             @if(!isset($dish->original_image))
                                 <i class="fa-solid fa-xmark red"></i>
@@ -35,13 +35,25 @@
                             @endif
 
                         </td>
-                        <td class="pt-4">{{ $dish->name }}</td>
-                        <td class="pt-4">&euro; {{ number_format($dish->price, 2, ',', '.') }}</td>
+                        <td class="pt-4 w-auto text-center">{{ $dish->name }}</td>
+                        <td class="pt-4 w-auto text-center">&euro;{{ number_format($dish->price, 2, ',', '.') }}</td>
 
-                        <td class="pt-4">{{ $dish->desc }}</td>
-                        <td class="pt-4">{{ $dish->visibility ? 'Visible' : 'Hidden' }}</td>
-                        <td class="pt-4">{{ $dish->vegan ? 'Yes' : 'No' }}</td>
-                        <td class="pt-4">
+                        <td class="pt-4 ps-3 w-auto">{{ $dish->desc }}</td>
+                        <td class="pt-4 w-auto text-center">
+                            @if($dish->visibility)
+                                <i class="fa-solid fa-thumbs-up green"></i>
+                            @else
+                                <i class="fa-solid fa-thumbs-down red"></i>
+                            @endif
+                        </td>
+                        <td class="pt-4 w-auto text-center">
+                            @if($dish->vegan)
+                            <i class="fa-solid fa-leaf green"></i>
+                        @else
+                            <i class="fa-solid fa-cow red"></i>
+                        @endif
+                        </td>
+                        <td class="pt-4 text-center">
                             <div class="d-flex ms-4">
                                 <div>
                                     <a href="{{ route('admin.dishes.edit', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-warning mx-1">

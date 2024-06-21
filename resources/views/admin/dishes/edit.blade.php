@@ -42,8 +42,8 @@
         <div class="form-group pt-3">
             <label for="visibility">Visibilità:</label>
             <select name="visibility" id="visibility" class="form-control" required>
-                <option value="1" {{ old('visibility', $dish->visibility) ? 'selected' : '' }}>Visible</option>
-                <option value="0" {{ old('visibility', $dish->visibility) ? '' : 'selected' }}>Hidden</option>
+                <option value="1" {{ old('visibility', $dish->visibility) ? 'selected' : '' }}>Visibile</option>
+                <option value="0" {{ old('visibility', $dish->visibility) ? '' : 'selected' }}>Non visibile</option>
             </select>
             @error('visibility')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -64,7 +64,7 @@
         <div class="form-group pt-3">
             <label for="vegan">Vegano:</label>
             <select name="vegan" id="vegan" class="form-control">
-                <option value="1" {{ old('vegan', $dish->vegan) ? 'selected' : '' }}>Yes</option>
+                <option value="1" {{ old('vegan', $dish->vegan) ? 'selected' : '' }}>Si</option>
                 <option value="0" {{ old('vegan', $dish->vegan) ? '' : 'selected' }}>No</option>
             </select>
             @error('vegan')
