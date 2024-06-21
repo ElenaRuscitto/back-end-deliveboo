@@ -22,7 +22,8 @@
 
         <div class="d-flex justify-content-center my-3">
             <div class="btn btn-primary me-2 ">
-                <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant]) }}"><i class="fa-solid fa-eye text-white"></i></a>
+                {{-- DA SCOMMENTARE --}}
+                <a href="{{ route('admin.show', ['restaurant' => $restaurant]) }}"><i class="fa-solid fa-eye text-white"></i></a>
 
             </div>
 

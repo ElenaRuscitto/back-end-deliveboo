@@ -5,12 +5,10 @@
         {{-- @dd($restaurant) --}}
         <div class=" my-3 box-content table-responsive-xxl w-100">
 
-            <div class="text-center">
-                <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
-            </div>
             @if (empty($myRestaurant->dishes))
-                <p>Non ci sono piatti</p>
+            <p>Non ci sono piatti</p>
             @else
+            <h1 class="text-center">Il Tuo Menu</h1>
             <table class="table table-striped m-5">
                 <thead>
                     <tr>
@@ -29,9 +27,9 @@
                         <td class="pt-4  text-center">
 
                             @if(!isset($dish->original_image))
-                                <i class="fa-solid fa-xmark red"></i>
+                            <i class="fa-solid fa-xmark red"></i>
                             @else
-                                <i class="fa-solid fa-check green"></i>
+                            <i class="fa-solid fa-check green"></i>
                             @endif
 
                         </td>
@@ -44,18 +42,18 @@
                                 <i class="fa-solid fa-thumbs-up green"></i>
                             @else
                                 <i class="fa-solid fa-thumbs-down red"></i>
-                            @endif
-                        </td>
-                        <td class="pt-4 w-auto text-center">
-                            @if($dish->vegan)
-                            <i class="fa-solid fa-leaf green"></i>
-                        @else
-                            <i class="fa-solid fa-xmark red"></i>
-                        @endif
-                        </td>
-                        <td class="pt-4 text-center">
-                            <div class="d-flex ms-4">
-                                <div>
+                                @endif
+                            </td>
+                            <td class="pt-4 w-auto text-center">
+                                @if($dish->vegan)
+                                <i class="fa-solid fa-leaf green"></i>
+                                @else
+                                <i class="fa-solid fa-xmark red"></i>
+                                @endif
+                            </td>
+                            <td class="pt-4 text-center">
+                                <div class="d-flex ms-4">
+                                    <div>
                                     <a href="{{ route('admin.dishes.edit', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-warning mx-1">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
@@ -79,17 +77,20 @@
             </table>
             @endif
         </div>
+        <div class="text-center">
+            <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
+        </div>
 
     </div>
-@endsection
+    @endsection
 
 
 
-<script>
+    <script>
 
-    function showImage(event){
-        const thumb = document.getElementById('thumb');
-        thumb.src = URL.createObjectURL(event.target.files[0]);
+        function showImage(event){
+            const thumb = document.getElementById('thumb');
+            thumb.src = URL.createObjectURL(event.target.files[0]);
 
     }
 </script>

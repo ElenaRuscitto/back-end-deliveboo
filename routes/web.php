@@ -30,8 +30,14 @@ Route::middleware(['auth', 'verified'])
                 ->name('admin.')
                 ->group(function(){
                     // tutte le rotte protette da auth
-                    Route::get('/',[DashboardController::class, 'index'])->name('home');
-                    Route::resource('/restaurants', RestaurantsController::class);
+                    Route::get('/',[RestaurantsController::class, 'index'])->name('home');
+                    // Route::resource('/restaurants', RestaurantsController::class);
+                    Route::get('/menu', [RestaurantsController::class, 'show'])->name('show');
+                    Route::get('/create', [RestaurantsController::class, 'create'])->name('create');
+                    Route::post('/store', [RestaurantsController::class, 'store'])->name('store');
+                    // Route::get('/edit', [RestaurantsController::class, 'edit'])->name('edit');
+                    // Route::put('/update', [RestaurantsController::class, 'update'])->name('update');
+                    // Route::delete('/destroy', [RestaurantsController::class, 'destroy'])->name('destroy');
                     // Route::resource('restaurants.dishes', DishesController::class);
                     //! Rotta di creazione e salvataggio piatti
                     Route::get('/restaurants/{restaurant}/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
