@@ -21,9 +21,7 @@ use App\Models\Restaurant;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware(['auth', 'verified'])
                 ->prefix('admin')
@@ -31,14 +29,14 @@ Route::middleware(['auth', 'verified'])
                 ->group(function(){
                     // tutte le rotte protette da auth
                     Route::get('/',[RestaurantsController::class, 'index'])->name('home');
-                    // Route::resource('/restaurants', RestaurantsController::class);
+
                     Route::get('/menu', [RestaurantsController::class, 'show'])->name('show');
                     Route::get('/create', [RestaurantsController::class, 'create'])->name('create');
                     Route::post('/store', [RestaurantsController::class, 'store'])->name('store');
                     // Route::get('/edit', [RestaurantsController::class, 'edit'])->name('edit');
                     // Route::put('/update', [RestaurantsController::class, 'update'])->name('update');
                     // Route::delete('/destroy', [RestaurantsController::class, 'destroy'])->name('destroy');
-                    // Route::resource('restaurants.dishes', DishesController::class);
+
                     //! Rotta di creazione e salvataggio piatti
                     Route::get('/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
                     Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
