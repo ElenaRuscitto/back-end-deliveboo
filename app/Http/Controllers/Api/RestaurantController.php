@@ -12,7 +12,8 @@ class RestaurantController extends Controller
 {
     //? Mi Restituisce tutti i ristoranti
     public function index(){
-        $restaurants = Restaurant::with('types')->get();
+        $restaurants = Restaurant::with('types')->orderBy('name')->get();
+
         $response = [
             'total_results' => $restaurants->count(),
             'restaurants' => $restaurants
@@ -24,10 +25,10 @@ class RestaurantController extends Controller
 
 //? Mi Restituisce tutti i tipi di ristorante
     public function getTypes(){
-        $types = Type::all();
+        $types = Type::all()->sortBy('name');
         $response = [
             'total_results' => $types->count(),
-            'types' => $types
+            'types' => $types->values()->all(),
         ];
 
         return response()->json($response);
@@ -55,7 +56,7 @@ class RestaurantController extends Controller
         //* Faccio la chiamata al db per i ristoranti che appartengono a questi tipi
         $restaurants = Restaurant::whereHas('types', function($query) use ($types){
             $query->whereIn('name', $types);
-        }, '=', count($types))->with('types')->get();
+        }, '=', count($types))->with('types')->orderBy('name')->get();
 
         $response = [
             'total_result' => $restaurants->count(),
