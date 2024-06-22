@@ -21,7 +21,7 @@
         <div class="btn-group mt-1" role="group" aria-label="Basic checkbox toggle button group">
             @foreach ($types as $type)
                 <input name="types[]"type="checkbox" class="btn-check" id="{{$type->name}}" autocomplete="off" value="{{$type->id}}" @if (
-                    ($errors->any() && in_array($type->id, old('types', []))) )@endif >
+                    ($errors->any() && in_array($type->id, old('types', []))) )checked @endif >
                 <label class="btn btn-outline-primary btn-sm" for="{{$type->name}}">{{$type->name}}</label>
             @endforeach
         </div>
