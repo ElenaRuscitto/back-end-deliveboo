@@ -129,4 +129,5 @@ class RestaurantsController extends Controller
     {
         //
     }
+
 }

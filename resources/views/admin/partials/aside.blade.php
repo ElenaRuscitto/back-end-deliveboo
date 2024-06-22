@@ -19,13 +19,16 @@
         {{--! /Debug Aggiunta ristorante --}}
         @if (isset($restaurant) && !empty($restaurant))
 
-            {{--? Aggiunta piatto --}}
-            <div class="col mb-3 my-link">
-                <a class="nav-link" href="{{ route('admin.dishes.create', $restaurant)}}">Aggiungi piatto</a>
-            </div>
-            {{--? /Aggiunta piatto --}}
-
-
+        {{--? Aggiunta piatto --}}
+        <div class="col mb-3 my-link">
+            <a class="nav-link" href="{{ route('admin.dishes.create', $restaurant)}}">Aggiungi piatto</a>
+        </div>
+        {{--? /Aggiunta piatto --}}
         @endif
+
+        <div class="col mb-3 my-link">
+            <a class="nav-link" href="{{ route('admin.orders.index')}}">Ordini</a>
+        </div>
+
     </div>
 </div>

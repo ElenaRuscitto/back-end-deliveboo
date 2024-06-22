@@ -6,6 +6,7 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RestaurantsController;
 use App\Http\Controllers\Admin\DishesController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Models\Restaurant;
 
 /*
@@ -47,6 +48,10 @@ Route::middleware(['auth', 'verified'])
 
                     //! Rotta per il delete piatti
                     Route::delete('/dishes/{dish}', [DishesController::class, 'destroy'])->name('dishes.destroy');
+
+                    //ORDINI
+                    Route::get('/ordini', [OrdersController::class, 'index'])->name('orders.index');
+                    Route::get('/ordini/{order}', [OrdersController::class, 'show'])->name('orders.show');
                 });
 
 Route::middleware('auth')->group(function () {
