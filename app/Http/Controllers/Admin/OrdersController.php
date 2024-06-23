@@ -29,8 +29,5 @@ class OrdersController extends Controller
 
         return view('admin.orders.show', compact('order', 'dishes'));
     }
-    public function store(Request $request){
 
-        return response()->json($request->all());
-    }
 }
