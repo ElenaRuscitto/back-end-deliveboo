@@ -52,6 +52,7 @@ Route::middleware(['auth', 'verified'])
                     //ORDINI
                     Route::get('/ordini', [OrdersController::class, 'index'])->name('orders.index');
                     Route::get('/ordini/{order}', [OrdersController::class, 'show'])->name('orders.show');
+                    Route::post('/send-order',[OrdersController::class, 'store']);
                 });
 
 Route::middleware('auth')->group(function () {

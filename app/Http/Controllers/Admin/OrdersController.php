@@ -24,6 +24,13 @@ class OrdersController extends Controller
     public function show(Order $order)
     {
         $dishes =  $order->dishes()->get();
+
+        // TODO: ristorante può vedere solo i propri ordini
+
         return view('admin.orders.show', compact('order', 'dishes'));
+    }
+    public function store(Request $request){
+
+        return response()->json($request->all());
     }
 }
