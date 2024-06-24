@@ -28,12 +28,12 @@ class RestaurantsController extends Controller
         }
 
         // Prelevo tutti i tipi di ristoranti
-        $types = Type::all();
+        $types = Type::orderBy('name')->get();
 
         // Controlla se l'utente ha un ristorante associato
         //TODO: dare possibilità di creazione se il ristorante non esiste
         if (!$restaurant) {
-            $types = Type::all();
+            $types = Type::orderBy('name')->get();
             return view('admin.restaurants.create',compact('types'));
         }
         //!Autorizzazione alla rotta
@@ -129,4 +129,5 @@ class RestaurantsController extends Controller
     {
         //
     }
+
 }
