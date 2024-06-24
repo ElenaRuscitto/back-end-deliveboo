@@ -21,6 +21,14 @@ class OrdersController extends Controller
 
         $new_order->save();
 
+        // $dishes = $request->dishes->all();
+
+        // foreach($dishes as $dish){
+        //     $new_order->dishes()->attach($dish->id, $dish->restaurant_id);
+        // }
+
+
         return response()->json(['success' => true, 'order' => $new_order, 'piatti' => $request->dishes]);
+
     }
 }
