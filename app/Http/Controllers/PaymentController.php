@@ -31,7 +31,8 @@ class PaymentController extends Controller
 
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
-
+        // $orderDetails = $request->order_details;
+        // dump($request);
         $result = $gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
