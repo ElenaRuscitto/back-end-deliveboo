@@ -19,9 +19,8 @@ class OrdersController extends Controller
         $new_order->desc = $request->notes;
         $new_order->tot = number_format((float)$request->tot, 2, '.', '');
 
-
         $new_order->save();
 
-        return response()->json(['success' => true, 'order' => $new_order]);
+        return response()->json(['success' => true, 'order' => $new_order, 'piatti' => $request->dishes]);
     }
 }
