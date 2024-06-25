@@ -20,12 +20,6 @@ class PaymentController extends Controller
 
     public function generateToken()
     {
-        // $gateway = new Gateway([
-        //     'environment' => config('services.braintree.environment'),
-        //     'merchantId' => config('services.braintree.merchantId'),
-        //     'publicKey' => config('services.braintree.publicKey'),
-        //     'privateKey' => config('services.braintree.privateKey'),
-        // ]);
 
         $clientToken = $this->gateway->clientToken()->generate();
 
@@ -34,12 +28,6 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request)
     {
-        // $gateway = new Gateway([
-        //     'environment' => config('services.braintree.environment'),
-        //     'merchantId' => config('services.braintree.merchantId'),
-        //     'publicKey' => config('services.braintree.publicKey'),
-        //     'privateKey' => config('services.braintree.privateKey'),
-        // ]);
 
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
