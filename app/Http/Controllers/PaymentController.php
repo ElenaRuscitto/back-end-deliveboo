@@ -6,34 +6,46 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function generateToken()
-    {
-        $gateway = new Gateway([
+    protected $gateway;
+
+    public function __construct(){
+
+        $this->gateway = new Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
             'publicKey' => config('services.braintree.publicKey'),
             'privateKey' => config('services.braintree.privateKey'),
         ]);
+    }
 
-        $clientToken = $gateway->clientToken()->generate();
+    public function generateToken()
+    {
+        // $gateway = new Gateway([
+        //     'environment' => config('services.braintree.environment'),
+        //     'merchantId' => config('services.braintree.merchantId'),
+        //     'publicKey' => config('services.braintree.publicKey'),
+        //     'privateKey' => config('services.braintree.privateKey'),
+        // ]);
+
+        $clientToken = $this->gateway->clientToken()->generate();
 
         return response()->json(['token' => $clientToken]);
     }
 
     public function processPayment(Request $request)
     {
-        $gateway = new Gateway([
-            'environment' => config('services.braintree.environment'),
-            'merchantId' => config('services.braintree.merchantId'),
-            'publicKey' => config('services.braintree.publicKey'),
-            'privateKey' => config('services.braintree.privateKey'),
-        ]);
+        // $gateway = new Gateway([
+        //     'environment' => config('services.braintree.environment'),
+        //     'merchantId' => config('services.braintree.merchantId'),
+        //     'publicKey' => config('services.braintree.publicKey'),
+        //     'privateKey' => config('services.braintree.privateKey'),
+        // ]);
 
         $amount = $request->amount;
         $nonce = $request->payment_method_nonce;
         // $orderDetails = $request->order_details;
         // dump($request);
-        $result = $gateway->transaction()->sale([
+        $result = $this->gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
             'options' => [
