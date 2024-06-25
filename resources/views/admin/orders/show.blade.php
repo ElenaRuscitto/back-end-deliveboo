@@ -14,11 +14,11 @@
     <p>Tot pagato {{ $order->tot }}</p>
 
     <h2>I piatti ordinati</h2>
-    @foreach ($dishes as $dish )
     <div>
-        <div> Nome: {{ $dish->name}}</div>
-        <div>Desc: {{ $dish->desc}}</div>
-        <div>Prezzo: {{ $dish->price}}</div>
+    @foreach ($dishes as $dish )
+        <p> Nome: {{ $dish->name}}</p>
+        <p>Desc: {{ $dish->desc}}</p>
+        <p>Prezzo: {{ $dish->price}}</p>
+        @endforeach
     </div>
-    @endforeach
 </div>
