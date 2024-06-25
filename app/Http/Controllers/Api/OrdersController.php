@@ -23,10 +23,27 @@ class OrdersController extends Controller
 
         // $dishes = $request->dishes->all();
 
-        // foreach($dishes as $dish){
-        //     $new_order->dishes()->attach($dish->id, $dish->restaurant_id);
+        // Iterare sugli oggetti 'dishes' e riempire la tabella pivot
+        // foreach ($request->dishes as $dish) {
+
+        //     $new_order->dishes()->attach($dish['id'], ['quantity' => $dish['quantity']]);
         // }
 
+        if (isset($request->dishes) && is_array($request->dishes)) {
+            // Iterare sugli oggetti 'dishes' e riempire la tabella pivot
+            foreach ($request->dishes as $dish) {
+                // Controllare che 'id' e 'quantity' esistano in ogni oggetto 'dish'
+                if (isset($dish['dish']['id']) && isset($dish['quantity'])) {
+                    $new_order->dishes()->attach($dish['dish']['id'], ['quantity' => $dish['quantity']]);
+                } else {
+                    // Log di errore se mancano 'id' o 'quantity'
+                    return response()->error('Dish missing id or quantity', ['dish' => $dish]);
+                }
+            }
+        } else {
+            // Log di errore se 'dishes' non è definito o non è un array
+            return response()->error('Dishes is not set or not an array', ['dishes' => $request->dishes]);
+        }
 
         return response()->json(['success' => true, 'order' => $new_order, 'piatti' => $request->dishes]);
 
