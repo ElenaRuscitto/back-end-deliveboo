@@ -17,7 +17,7 @@ class OrdersController extends Controller
         $restaurant = Restaurant::with('dishes.orders')->findOrFail($restaurantId);
 
         // Get all orders related to the restaurant's dishes
-        $orders = $restaurant->dishes->flatMap->orders->unique('id');
+        $orders = $restaurant->dishes->flatMap->orders->unique('id')->sortByDesc('created_at');;
 
         return view('admin.orders.index', compact('restaurant', 'orders'));
     }
