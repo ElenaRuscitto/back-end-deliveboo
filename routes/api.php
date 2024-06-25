@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\OrdersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RestaurantController;
-
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,3 +28,5 @@ Route::get('/restaurants/type', [RestaurantController::class, 'getRestaurantsByT
 Route::get('/search/{search}', [RestaurantController::class, 'getSearchRestaurants']);
 Route::post('/send-order',[OrdersController::class, 'store']);
 
+Route::get('/payment/token', [PaymentController::class, 'generateToken']);
+Route::post('/payment/process', [PaymentController::class, 'processPayment']);
