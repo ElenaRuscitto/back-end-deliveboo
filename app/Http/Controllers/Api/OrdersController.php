@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Http\Controllers\Mail\MailController;
+use App\Mail\OrderConfirmation;
 
 class OrdersController extends Controller
 {
@@ -35,6 +37,9 @@ class OrdersController extends Controller
             // errore se 'dishes' non è definito o non è un array
             return response()->error('Dishes is not set or not an array', ['dishes' => $request->dishes]);
         }
+        $mailController = new MailController();
+        $mailController->sendMail($new_order, $request->dishes);
+
 
         return response()->json(['success' => true, 'order' => $new_order, 'piatti' => $request->dishes]);
 
