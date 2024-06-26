@@ -120,7 +120,7 @@ class DishesController extends Controller
         $dish -> update($form_data);
 
         // Aggiorna il prodotto con i dati validati
-        $dish->update($request->all());
+        // $dish->update($request->all());
         // Reindirizza alla pagina di modifica con un messaggio di successo
 
         return redirect()->route('admin.show')->with('success', 'Piatto aggiornato');
