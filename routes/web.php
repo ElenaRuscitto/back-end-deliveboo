@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RestaurantsController;
 use App\Http\Controllers\Admin\DishesController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Models\Restaurant;
+use App\Http\Controllers\Mail\MailController;
 
 /*
 |--------------------------------------------------------------------------
