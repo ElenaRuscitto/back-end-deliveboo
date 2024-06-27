@@ -10,9 +10,9 @@
 
     .my-link {
         color: $primary-color;
+        transition: all 1s;
         &:hover {
             margin-left: 30px;
-            transition: all 1s;
         }
     }
 }
