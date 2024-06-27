@@ -57,7 +57,7 @@ Route::middleware(['auth', 'verified'])
 
                     //STATISTICHE
 
-                    Route::get('/statistiche', [ChartController::class, 'chart']);
+                    Route::get('/statistiche', [ChartController::class, 'chart'])->name('chart.index');
                 });
 
 Route::middleware('auth')->group(function () {

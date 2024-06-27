@@ -30,5 +30,9 @@
             <a class="nav-link" href="{{ route('admin.orders.index')}}">Ordini</a>
         </div>
 
+        <div class="col mb-3 my-link">
+            <a class="nav-link" href="{{ route('admin.chart.index')}}">Statistiche</a>
+        </div>
+
     </div>
 </div>

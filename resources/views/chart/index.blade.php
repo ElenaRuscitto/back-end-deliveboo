@@ -133,7 +133,7 @@
 
         const labels = statistics.map(stat => stat.date);
         const totalSales = statistics.map(stat => stat.total_sales);
-        const totalOrders = statistics.map(stat => stat.total_orders);
+        // const totalOrders = statistics.map(stat => stat.total_orders);
 
         const ctx = document.getElementById('salesChart').getContext('2d');
         const salesChart = new Chart(ctx, {
@@ -150,15 +150,15 @@
                         fill: false,
                         yAxisID: 'y'
                     },
-                    {
-                        label: 'Numero di Ordini',
-                        data: totalOrders,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1,
-                        fill: false,
-                        yAxisID: 'y1'
-                    }
+                    // {
+                    //     label: 'Numero di Ordini',
+                    //     data: totalOrders,
+                    //     backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    //     borderColor: 'rgba(54, 162, 235, 1)',
+                    //     borderWidth: 1,
+                    //     fill: false,
+                    //     yAxisID: 'y1'
+                    // }
                 ]
             },
             options: {
@@ -171,17 +171,17 @@
                             text: 'Vendite Totali (€)'
                         }
                     },
-                    y1: {
-                        beginAtZero: true,
-                        position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Numero di Ordini'
-                        },
-                        grid: {
-                            drawOnChartArea: false
-                        }
-                    }
+                    // y1: {
+                    //     beginAtZero: true,
+                    //     position: 'right',
+                    //     title: {
+                    //         display: true,
+                    //         text: 'Numero di Ordini'
+                    //     },
+                    //     grid: {
+                    //         drawOnChartArea: false
+                    //     }
+                    // }
                 }
             }
         });
