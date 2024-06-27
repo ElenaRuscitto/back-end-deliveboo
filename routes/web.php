@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DishesController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Models\Restaurant;
 use App\Http\Controllers\Mail\MailController;
+use App\Http\Controllers\Chart\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,10 @@ Route::middleware(['auth', 'verified'])
                     //ORDINI
                     Route::get('/ordini', [OrdersController::class, 'index'])->name('orders.index');
                     Route::get('/ordini/{order}', [OrdersController::class, 'show'])->name('orders.show');
+
+                    //STATISTICHE
+
+                    Route::get('/statistiche', [ChartController::class, 'chart']);
                 });
 
 Route::middleware('auth')->group(function () {

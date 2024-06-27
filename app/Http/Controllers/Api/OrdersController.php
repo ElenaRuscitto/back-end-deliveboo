@@ -11,6 +11,17 @@ use App\Mail\OrderConfirmation;
 class OrdersController extends Controller
 {
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'telephone' => 'nullable|string',
+            'notes' => 'nullable|string',
+
+        ]);
+
+
         // $data = $request->all();
         $new_order = new Order();
         $new_order->name = $request->name;
