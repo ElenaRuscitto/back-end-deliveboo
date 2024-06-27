@@ -1,9 +1,9 @@
 @extends('layouts.verification')
 
 @section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container-fluid">
+    <div class="row justify-content-flex-start">
+        <div class="col-md-6 pt-5 mg-left">
             <div class="card">
                 <div class="card-header" style="border: solid 2px rgb(232, 135, 53)">{{ __('Accedi') }}</div>
 
@@ -70,4 +70,10 @@
         </div>
     </div>
 </div>
+
+<style>
+    .mg-left{
+        margin-left: 5%
+    }
+</style>
 @endsection
