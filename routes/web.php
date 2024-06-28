@@ -22,7 +22,7 @@ use App\Http\Controllers\Chart\ChartController;
 |
 */
 
-Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/', [RestaurantsController::class, 'index'])->name('home');
 
 
 

@@ -19,27 +19,30 @@ class RestaurantsController extends Controller
 
         // Controllo se l'utente è autenticato
         $user = Auth::user();
+        if($user){
+            // Prendo il ristorante associato all'utente
+            $restaurant = Restaurant::where('user_id', $user->id)->first();
+            if($restaurant != null){
+                session(['restaurant_id' => $restaurant->id]);
 
-        // Prendo il ristorante associato all'utente
-        $restaurant = Restaurant::where('user_id', $user->id)->first();
-        if($restaurant != null){
-            session(['restaurant_id' => $restaurant->id]);
+            }
 
-        }
-
-        // Prelevo tutti i tipi di ristoranti
-        $types = Type::orderBy('name')->get();
-
-        // Controlla se l'utente ha un ristorante associato
-        //TODO: dare possibilità di creazione se il ristorante non esiste
-        if (!$restaurant) {
+            // Prelevo tutti i tipi di ristoranti
             $types = Type::orderBy('name')->get();
-            return view('admin.restaurants.create',compact('types'));
+
+            // Controlla se l'utente ha un ristorante associato
+            //TODO: dare possibilità di creazione se il ristorante non esiste
+            if (!$restaurant) {
+                $types = Type::orderBy('name')->get();
+                return view('admin.restaurants.create',compact('types'));
+            }
+            //!Autorizzazione alla rotta
+            $this->authorize('view', $restaurant);
+            // Vado alla visualizzazione del ristorante associato all'user
+            return view('admin.restaurants.index', compact('restaurant', 'user', 'types'));
+        }else{
+            return view('auth.login');
         }
-        //!Autorizzazione alla rotta
-        $this->authorize('view', $restaurant);
-        // Vado alla visualizzazione del ristorante associato all'user
-        return view('admin.restaurants.index', compact('restaurant', 'user', 'types'));
     }
 
     /**
