@@ -1,13 +1,13 @@
 @extends('layouts.verification')
 
 @section('content')
-<div class="container mt-4">
+<div class="container pt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header my-head-forgot">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
+                <div class="card-body" style="border: solid 2px rgb(232, 135, 53); border-radius: 0!important">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
@@ -33,7 +33,7 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn my-btn">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
@@ -44,4 +44,33 @@
         </div>
     </div>
 </div>
+
+<style>
+       @media (max-width: 768px) {
+        .mg-left{
+        margin-left: 0%!important
+        }
+    }
+
+    .mg-left{
+        margin-left: 5%
+    }
+
+    .my-head-forgot {
+        background-color: rgb(232, 135, 53);
+        border: 2px solid rgb(232, 135, 53);
+        color: white;
+    }
+
+    .my-btn {
+        background-color: rgb(232, 135, 53);
+        color: white;
+
+    }
+    .my-btn:hover {
+        background-color: rgba(232, 134, 53, 0.767);
+        color: white;
+
+    }
+</style>
 @endsection

@@ -3,11 +3,11 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-flex-start">
-        <div class="col-md-6 pt-5 mg-left">
+        <div class="col-xs-12 col-md-8 col-xl-6 pt-5 mg-left">
             <div class="card">
                 <div class="card-header my-head-accedi" ><strong>{{ __('Registrati') }}</strong></div>
 
-                <div class="card-body" >
+                <div class="card-body" style="border: solid 2px rgb(232, 135, 53); border-radius: 0!important" >
                     <form id="registration-form" method="POST" action="{{ route('registrati') }}">
                         @csrf
 
@@ -131,6 +131,13 @@
 {{--? /Script verifica lunghezza password --}}
 
 <style>
+
+    @media (max-width: 768px) {
+            .mg-left{
+            margin-left: 0%!important
+        }
+    }
+
     .mg-left{
         margin-left: 5%
     }

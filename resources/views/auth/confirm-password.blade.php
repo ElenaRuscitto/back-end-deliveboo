@@ -46,4 +46,16 @@
         </div>
     </div>
 </div>
+
+<style>
+       @media (max-width: 768px) {
+        .mg-left{
+        margin-left: 0%!important
+        }
+    }
+
+    .mg-left{
+        margin-left: 5%
+    }
+</style>
 @endsection

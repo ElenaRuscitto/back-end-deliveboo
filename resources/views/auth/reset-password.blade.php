@@ -1,13 +1,13 @@
 @extends('layouts.verification')
 
 @section('content')
-<div class="container mt-4">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header my-head-reset">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
+                <div class="card-body" style="border: solid 2px rgb(232, 135, 53); border-radius: 0!important">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
@@ -52,7 +52,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn my-btn">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
@@ -63,4 +63,33 @@
         </div>
     </div>
 </div>
+
+<style>
+    @media (max-width: 768px) {
+        .mg-left{
+        margin-left: 0%!important
+        }
+    }
+
+    .mg-left{
+        margin-left: 5%
+    }
+
+    .my-head-reset {
+        background-color: rgb(232, 135, 53);
+        border: 2px solid rgb(232, 135, 53);
+        color: white;
+    }
+
+    .my-btn {
+        background-color: rgb(232, 135, 53);
+        color: white;
+
+    }
+    .my-btn:hover {
+        background-color: rgba(232, 134, 53, 0.767);
+        color: white;
+
+    }
+</style>
 @endsection
