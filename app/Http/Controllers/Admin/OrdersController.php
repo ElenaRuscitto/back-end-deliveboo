@@ -23,9 +23,8 @@ class OrdersController extends Controller
     }
     public function show(Order $order)
     {
-        $dishes =  $order->dishes()->get();
+        $dishes =  $order->dishes()->withPivot('quantity')->get();
 
-        // TODO: ristorante può vedere solo i propri ordini
 
         return view('admin.orders.show', compact('order', 'dishes'));
     }
