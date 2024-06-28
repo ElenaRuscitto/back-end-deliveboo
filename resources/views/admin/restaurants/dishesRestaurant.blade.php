@@ -84,7 +84,7 @@
                             <div class="tab-actions">
                                 {{-- Show --}}
                                 <div class="my-1 mx-1">
-                                    <a href="{{ route('admin.dishes.edit', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-primary">
+                                    <a href="{{ route('admin.dishes.show', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-primary">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </div>

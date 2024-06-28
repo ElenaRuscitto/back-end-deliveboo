@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ $stat->date }}</td>
                     <td>{{ $stat->total_orders }}</td>
-                    <td>{{ number_format($stat->total_sales, 2) }}</td>
+                    <td>{{ number_format($stat->total_sales,2, ',', '.')}} &euro;</td>
                 </tr>
             @endforeach
         </tbody>

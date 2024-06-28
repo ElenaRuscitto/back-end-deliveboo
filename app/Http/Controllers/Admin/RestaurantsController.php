@@ -9,6 +9,7 @@ use App\Functions\Helper as Help;
 use App\Models\Restaurant;
 use App\Http\Requests\RestaurantRequest;
 use App\Models\Type;
+use App\Http\Controllers\Chart\ChartController;
 class RestaurantsController extends Controller
 {
     /**
@@ -31,15 +32,20 @@ class RestaurantsController extends Controller
             $types = Type::orderBy('name')->get();
 
             // Controlla se l'utente ha un ristorante associato
-            //TODO: dare possibilità di creazione se il ristorante non esiste
             if (!$restaurant) {
                 $types = Type::orderBy('name')->get();
                 return view('admin.restaurants.create',compact('types'));
             }
             //!Autorizzazione alla rotta
             $this->authorize('view', $restaurant);
+
+              // Use ChartController to get chart data
+              $chartController = new ChartController();
+              $chartData = $chartController->getChartData();
+            // dd($chartData);
+
             // Vado alla visualizzazione del ristorante associato all'user
-            return view('admin.restaurants.index', compact('restaurant', 'user', 'types'));
+            return view('admin.restaurants.index', $chartData, compact('restaurant', 'user', 'types'));
         }else{
             return view('auth.login');
         }
@@ -53,7 +59,6 @@ class RestaurantsController extends Controller
         // ? Prendo l'user
         // $user = Auth::user();
         $types = Type::all();
-        // dd($types);
         return view('admin.restaurants.create', compact('types'));
     }
 
