@@ -2,56 +2,54 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center">Dettagli ordine</h1>
-    <table class="table table-striped m-5">
-        <thead>
-            <tr>
-                <th class="text-center">Codice Transazione</th>
-                <th class="text-center">Nome</th>
-                <th class="text-center">Indirizzo di consegna</th>
-                <th class="text-center">Email</th>
-                <th class="text-center">Numero di Telefono</th>
-                <th class="text-center">Note</th>
-                <th class="text-center">Totale Pagato</th>
-            </tr>
+    <h1 class="text-center mt-5">Dettagli ordine</h1>
+<div class="d-flex justify-content-center my-3 my-md-5">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            cod: <strong>{{ $order->code }}</strong>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Indirizzo: <strong>{{ $order->address }}</strong></li>
+            <li class="list-group-item">Email: <strong>{{ $order->email }}</strong></li>
+            <li class="list-group-item">Telefono: <strong>{{ $order->telephone }}</strong></li>
+            <li class="list-group-item">Totale: <strong>{{ number_format($order->tot,2, ',', '.')}} &euro;</strong></li>
+        </ul>
+    </div>
+</div>
+<h2 class="text-center">I piatti ordinati</h2>
+<div class="box-content table-responsive-md overflow-x-hidden w-100">
+
+    <table class="table mb-0 bg-white table-sm table-hover w-100 text-center my-3 my-md-5">
+        <thead class="bg-light">
+        <tr>
+            <th class="text-start tab-date text-center">Codice</th>
+            <th class="hide d-md-table-cell tab-date">Nome</th>
+            <th class="hide d-md-table-cell tab-roi">Quantità</th>
+            <th class="tab-state tab-date">Prezzo</th>
+
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="pt-4 ps-3 w-auto text-center">
-                    <strong>{{ $order->code }}</strong>
-                </td>
-                <td class="pt-3 w-auto text-center">{{ $order->name }}</td>
-                <td class="pt-3 ps-3 w-auto text-center">{{ $order->address }}</td>
-                <td class="pt-3 ps-3 w-auto text-center">{{ $order->email }}</td>
-                <td class="pt-3 ps-3 w-auto text-center">{{ $order->telephone }}</td>
-                <td class="pt-3 ps-3 w-auto text-center">{{ $order->desc }}</td>
-                <td class="pt-3 ps-3 w-auto text-center">{{ number_format($order->tot,2, ',', '.')}} &euro;</td>
-            </tr>
+        @foreach ($dishes as $dish )
+        <tr class="">
+            <td class="d-md-table-cell ">
+                <strong>{{ $dish->id}}</strong>
+            </td>
+            <td class="hide d-md-table-cell ">
+                {{ $dish->name}}
+            </td>
+            <td class="hide d-md-table-cell">
+                {{ $dish->pivot->quantity}}
+            </td>
+            <td class="d-md-table-cell ">
+                {{ number_format($dish->price,2, ',', '.')}} &euro;
+            </td>
+        </tr>
+        @endforeach
         </tbody>
     </table>
-    <h2 class="text-center">I piatti ordinati</h2>
-    <table class="table table-striped m-5">
-        <thead>
-            <tr>
-                <th class="text-center">Codice</th>
-                <th class="text-center">Nome</th>
-                <th class="text-center">Quantità</th>
-                <th class="text-center">Prezzo Unitario</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($dishes as $dish )
-            <tr>
-                <td class="pt-4 ps-3 w-auto text-center">
-                    <strong>{{ $dish->id}}</strong>
-                </td>
-                <td class="pt-3 w-auto text-center">{{ $dish->name}}</td>
-                <td class="pt-3 w-auto text-center">{{ $dish->pivot->quantity}}</td>
-                <td class="pt-3 ps-3 w-auto text-center">{{ number_format($dish->price,2, ',', '.')}} &euro;</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+</div>
 </div>
 @endsection
 

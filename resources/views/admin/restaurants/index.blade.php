@@ -16,16 +16,15 @@
                 <p>Email: {{ $restaurant->email }}</p>
                 <p>Indirizzo: {{ $restaurant->address }}</p>
                 <p>P.IVA: {{ $restaurant->vat }}</p>
+                <div class="d-flex justify-content-center my-3" >
+                    <a class="btn btn-primary me-2 " href="{{ route('admin.show', ['restaurant' => $restaurant]) }}"><i class="fa-solid fa-eye text-white"></i></a>
 
+                </div>
             </div>
         </div>
 
         <div class="d-flex justify-content-center my-3">
-            <div >
-                {{-- DA SCOMMENTARE --}}
-                <a class="btn btn-primary me-2 " href="{{ route('admin.show', ['restaurant' => $restaurant]) }}"><i class="fa-solid fa-eye text-white"></i></a>
 
-            </div>
 
             {{-- <div class="btn btn-warning me-2 ">
                 <a href="{{ route('admin.restaurants.edit', $restaurant) }}"><i class="fa-solid fa-pencil"></i></a>
