@@ -100,9 +100,10 @@
         height: 100vh;
         /*background-image: url("public/img/healthy-breakfast-ingredients-food-frame-802669.jpg") !important; */
         background-image: url("{{ asset('img/healthy-breakfast-ingredients-food-frame-802669.jpg') }}"); /* sfondo cambiabile con preferenza form al centro */
-        background-size: 100vw;
+        background-size: cover;
         background-repeat: no-repeat;
         background-position-x: 180;
+        back
         }
 
     .navbar{
