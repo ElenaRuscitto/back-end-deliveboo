@@ -12,7 +12,32 @@
         color: $primary-color;
         transition: all 1s;
         &:hover {
-            margin-left: 30px;
+            margin-left: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aside {
+        width: 80px;
+        height: calc(100vh - 58px);
+        top: 58px;
+        font-size: 1.2em;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            i {
+                text-align: center;
+            }
+        }
+        .my-link {
+            color: $primary-color;
+            cursor: pointer;
+            &:hover {
+                margin-left: 0;
+            }
         }
     }
 }
