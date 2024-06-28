@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+                <div class="card-header">{{ __('Conferma Password') }}</div>
 
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}
@@ -35,7 +35,7 @@
 
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('Dimenticata la Password?') }}
                                 </a>
                                 @endif
                             </div>
