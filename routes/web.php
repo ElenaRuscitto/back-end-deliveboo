@@ -44,6 +44,8 @@ Route::middleware(['auth', 'verified'])
                     Route::get('/dishes/create', [DishesController::class, 'create'])->name('dishes.create');
                     Route::post('/dishes/store', [DishesController::class, 'store'])->name('dishes.store');
 
+                    //Show piatto singolo
+                    Route::get('/dishes/{dish}', [DishesController::class, 'show'])->name('dishes.show');
                     //? Rotta di Edit per il piatto
                     Route::get('/dishes/{dish}/edit', [DishesController::class, 'edit'])->name('dishes.edit');
                     Route::put('/dishes/{dish}/update', [DishesController::class, 'update'])->name('dishes.update');

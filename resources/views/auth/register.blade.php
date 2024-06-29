@@ -158,5 +158,18 @@
         color: white;
 
     }
+    input:focus{
+  border-color:#e88735 !important;
+  box-shadow: 0 0 0 0.25rem rgba(232, 135, 53, .4)
+  !important;
+}
+.custom-checkbox:checked{
+    background-color: #e88735;
+}
+input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      box-shadow: 0 0 0 30px white inset !important;
+      -webkit-text-fill-color: black !important;
+    }
 </style>
 @endsection

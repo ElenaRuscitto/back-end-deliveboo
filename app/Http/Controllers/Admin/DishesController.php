@@ -77,10 +77,10 @@ class DishesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(Dish $dish)
     {
 
-
+        return view('admin.dishes.show',compact('dish'));
     }
 
     /**

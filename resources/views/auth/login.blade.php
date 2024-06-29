@@ -42,7 +42,7 @@
                         <div class="mb-4 row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <input class="form-check-input custom-checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Ricordami') }}
@@ -100,5 +100,18 @@
 
     }
 
+input:focus{
+  border-color:#e88735 !important;
+  box-shadow: 0 0 0 0.25rem rgba(232, 135, 53, .4)
+  !important;
+}
+.custom-checkbox:checked{
+    background-color: #e88735;
+}
+input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      box-shadow: 0 0 0 30px white inset !important;
+      -webkit-text-fill-color: black !important;
+    }
 </style>
 @endsection
