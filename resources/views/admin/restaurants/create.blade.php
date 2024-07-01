@@ -126,8 +126,10 @@
                       value="{{ old('image') }}"
                       placeholder="Immagine"
                       name="image"
-
+                      onchange="showImage(event)"
                     >
+                    <img class=" w-25 mt-2" id="thumb" :src="{{ asset('storage/uploads/' ) }}"
+                  >
 
                 </div>
             </div>
@@ -155,6 +157,12 @@
         }
         typesError.style.display = 'none';
         return true;
+    }
+
+    function showImage(event){
+        const thumb = document.getElementById('thumb');
+        thumb.src = URL.createObjectURL(event.target.files[0]);
+
     }
 </script>
 @endsection
