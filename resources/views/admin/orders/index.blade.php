@@ -5,7 +5,7 @@
         <div class=" my-3 box-content table-responsive-xxl w-100">
             @if (!$orders->isEmpty())
             <h1 class="text-center">Ordini Ricevuti</h1>
-            <div class="box-content table-responsive-md overflow-x-hidden w-100">
+            <div class="box-content table-responsive-md overflow-x-hidden w-100 mt-5">
                 <table class="table mb-0 bg-white table-sm table-hover w-100 text-center ">
                     <thead class="bg-light">
                     <tr>
