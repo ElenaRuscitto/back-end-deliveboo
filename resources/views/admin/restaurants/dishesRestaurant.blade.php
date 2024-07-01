@@ -15,7 +15,7 @@
                 <h1 class="text-center my-1">Il Tuo Menu</h1>
                 <div class="text-center p-3">
                     <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">
-                        <i class="fa-solid fa-plus"></i></a>
+                        <i class="fa-solid fa-plus p-2"></i></a>
 
                 </div>
 
