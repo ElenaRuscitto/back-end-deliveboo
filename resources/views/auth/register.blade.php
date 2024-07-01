@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row justify-content-flex-start">
+    <div class="row justify-content-center">
         <div class="col-xs-12 col-md-8 col-xl-6 pt-5 mg-left">
             <div class="card">
                 <div class="card-header my-head-accedi" ><strong>{{ __('Registrati') }}</strong></div>
