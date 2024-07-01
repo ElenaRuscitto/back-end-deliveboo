@@ -99,7 +99,7 @@
 
                                 {{-- Delete --}}
                                 <div class="my-1">
-                                    <form action="{{ route('admin.dishes.destroy', ['restaurant' => $myRestaurant->id, 'dish'=> $dish->id])}}" method="POST" class="mx-1">
+                                    <form action="{{ route('admin.dishes.destroy',  $dish)}}" method="POST" class="mx-1">
                                         @csrf
                                         @method('DELETE')
 
