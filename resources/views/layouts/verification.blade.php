@@ -47,7 +47,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/') }}">{{ __('Boo') }}</a>
+                            <a class="nav-link" href="{{url('/') }}"><img src="{{asset('logo.png')}}" alt="" class="w-25"></a>
                         </li>
                     </ul>
 
