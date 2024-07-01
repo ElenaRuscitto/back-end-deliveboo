@@ -22,22 +22,22 @@
                     <!-- 1 -->
                     @foreach ($orders as $order)
                     <tr class="">
-                        <td class="tab-img ">
+                        <td class="tab-img pt-3">
                             {{ $order->created_at }}
                         </td>
-                        <td class="hide d-md-table-cell ">
+                        <td class="hide d-md-table-cell pt-3">
                             {{ $order->code }}
                         </td>
-                        <td class="hide d-md-table-cell">
+                        <td class="hide d-md-table-cell pt-3">
                             {{ $order->name }}
                         </td>
-                        <td class="tab-desc">
+                        <td class="tab-desc pt-3">
                             {{ $order->address }}
                         </td>
-                        <td class="tab-vis">
+                        <td class="tab-vis pt-3">
                             {{ $order->email }}
                         </td>
-                        <td class="tab-veg">
+                        <td class="tab-veg pt-3">
                             &euro;{{ number_format($order->tot, 2, ',', '.') }}
                         </td>
                         <td class=" text-center ">
