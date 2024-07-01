@@ -99,7 +99,7 @@
     .main-bg{
         height: 100vh;
         /*background-image: url("public/img/healthy-breakfast-ingredients-food-frame-802669.jpg") !important; */
-        background-image: url("{{ asset('img/healthy-breakfast-ingredients-food-frame-802669.jpg') }}"); /* sfondo cambiabile con preferenza form al centro */
+        background-image: url("{{ asset('img/Screenshot 2024-07-01 alle 16.02.09.png') }}"); /* sfondo cambiabile con preferenza form al centro */
         background-size: cover;
         background-repeat: no-repeat;
         background-position-x: 180;
