@@ -11,13 +11,13 @@
                 <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">Aggiungi Piatto</a>
             </div>
             @else
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
+                <h1 class="text-center my-1">Il Tuo Menu</h1>
                 <div class="text-center p-3">
                     <a href="{{ route('admin.dishes.create', $myRestaurant) }}" class="btn btn-primary">
                         <i class="fa-solid fa-plus"></i></a>
 
                 </div>
-                    <h1 class="text-center my-1">Il Tuo Menu</h1>
 
 
             </div>
@@ -42,27 +42,27 @@
                     <!-- 1 -->
                     @foreach ($myRestaurant->dishes as $dish)
                     <tr class="">
-                        <td class="tab-img ">
+                        <td class="tab-img pt-4">
                             @if(!isset($dish->original_image))
                             <i class="fa-solid fa-xmark red"></i>
                             @else
                             <i class="fa-solid fa-check green"></i>
                             @endif
                         </td>
-                        <td class="hide d-md-table-cell ">
+                        <td class="hide d-md-table-cell pt-4">
                             <p class="fw-normal mb-1 text-center">{{ $dish->name }}</p>
                         </td>
-                        <td class="hide d-md-table-cell">
+                        <td class="hide d-md-table-cell pt-4">
                         <p class="fw-normal mb-1">
                             &euro;{{ number_format($dish->price, 2, ',', '.') }}
                         </p>
                         </td>
-                        <td class="tab-desc">
+                        <td class="tab-desc pt-4">
                             <p class="">
                                 {{ $dish->desc }}
                             </p>
                         </td>
-                        <td class="tab-vis">
+                        <td class="tab-vis pt-4">
                             <p class="fw-normal mb-1">
                                 @if($dish->visibility)
                                     <i class="fa-solid fa-thumbs-up green"></i>
@@ -71,7 +71,7 @@
                                 @endif
                             </p>
                         </td>
-                        <td class="tab-veg">
+                        <td class="tab-veg pt-4">
                             <p class="fw-normal mb-1">
                                 @if($dish->vegan)
                                 <i class="fa-solid fa-leaf green"></i>
@@ -80,17 +80,17 @@
                                 @endif
                             </p>
                         </td>
-                        <td class=" text-center ">
-                            <div class="tab-actions">
+                        <td class=" text-center pt-1">
+                            <div class="tab-actions ">
                                 {{-- Show --}}
-                                <div class="my-1 mx-1">
+                                <div class="mx-2">
                                     <a href="{{ route('admin.dishes.show', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-primary">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </div>
                                 {{-- Show --}}
                                 {{-- edit --}}
-                                <div class="my-1">
+                                <div class="">
                                     <a href="{{ route('admin.dishes.edit', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-warning">
                                         <i class="fa-solid fa-pencil"></i>
                                     </a>
@@ -98,14 +98,15 @@
                                 {{-- edit --}}
 
                                 {{-- Delete --}}
-                                <div class="my-1">
-                                    <form action="{{ route('admin.dishes.destroy',  $dish)}}" method="POST" class="mx-1">
+                                <div class="mx-2 pt-3">
+                                    <form action="{{ route('admin.dishes.destroy',  $dish)}}" method="POST" class="">
                                         @csrf
                                         @method('DELETE')
 
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare il piatto?')">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
+                                    </form>
                                 </div>
                                 {{-- /Delete --}}
                             </div>
@@ -120,72 +121,6 @@
 
 
 
-            {{-- <table class="table table-striped m-5">
-                <thead>
-                    <tr>
-                        <th class="text-center">Immagine</th>
-                        <th class="text-center">Nome Piatto</th>
-                        <th class="text-center">Prezzo</th>
-                        <th class="ps-3">Ingredienti/Descrizione</th>
-                        <th class="text-center">Visibilità</th>
-                        <th class="text-center">Vegano</th>
-                        <th class="ps-4 text-center">Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($myRestaurant->dishes as $dish)
-                    <tr>
-                        <td class="pt-4  text-center">
-
-                            @if(!isset($dish->original_image))
-                            <i class="fa-solid fa-xmark red"></i>
-                            @else
-                            <i class="fa-solid fa-check green"></i>
-                            @endif
-
-                        </td>
-                        <td class="pt-4 w-auto text-center">{{ $dish->name }}</td>
-                        <td class="pt-4 w-auto text-center">&euro;{{ number_format($dish->price, 2, ',', '.') }}</td>
-
-                        <td class="pt-4 ps-3 w-auto">{{ $dish->desc }}</td>
-                        <td class="pt-4 w-auto text-center">
-                            @if($dish->visibility)
-                                <i class="fa-solid fa-thumbs-up green"></i>
-                            @else
-                                <i class="fa-solid fa-thumbs-down red"></i>
-                                @endif
-                            </td>
-                            <td class="pt-4 w-auto text-center">
-                                @if($dish->vegan)
-                                <i class="fa-solid fa-leaf green"></i>
-                                @else
-                                <i class="fa-solid fa-xmark red"></i>
-                                @endif
-                            </td>
-                            <td class="pt-4 text-center">
-                                <div class="d-flex ms-4">
-                                    <div>
-                                    <a href="{{ route('admin.dishes.edit', ['restaurant' => $myRestaurant, 'dish'=> $dish]) }}" class="btn btn-warning mx-1">
-                                        <i class="fa-solid fa-pencil"></i>
-                                    </a>
-
-                                </div>
-                                <div>
-                                    <form action="{{ route('admin.dishes.destroy', ['restaurant' => $myRestaurant->id, 'dish'=> $dish->id])}}" method="POST" class="mx-1">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare il piatto?')">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table> --}}
             @endif
         </div>
 
