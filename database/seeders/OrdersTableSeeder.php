@@ -15,11 +15,11 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = Faker::create('it_IT');
         $today = Carbon::now();
         $oneYearAgo = Carbon::now()->subYear();
-        $numberOfOrders = 100; // Numero di ordini da creare
-        $maxDishesPerOrder = 5; // Numero massimo di piatti per ordine
+        $numberOfOrders = 2000; // Numero di ordini da creare
+        $maxDishesPerOrder = 4; // Numero massimo di piatti per ordine
 
         // Ottieni tutti i ristoranti
         $restaurants = DB::table('restaurants')->pluck('id');
@@ -47,7 +47,7 @@ class OrdersTableSeeder extends Seeder
                 'email' => $faker->email,
                 'telephone' => $faker->phoneNumber,
                 'tot' => 0, // Sarà aggiornato dopo l'inserimento dei piatti
-                'desc' => $faker->sentence,
+                'desc' => '',
                 'created_at' => $orderDate,
                 'updated_at' => $orderDate,
             ]);
