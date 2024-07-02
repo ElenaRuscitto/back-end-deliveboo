@@ -29,7 +29,7 @@
         <div class="col mb-3 ">
             <a class="nav-link d-flex justfy-content-center my-link" href="{{ route('admin.dishes.create', $restaurant)}}">
                 <i class="fa-solid fa-utensils me-md-2 pt-1"></i>
-                <span class="d-none d-md-block">Aggiungi piatto</span>
+                <span class="d-none d-xl-block">Aggiungi piatto</span>
             </a>
         </div>
 
