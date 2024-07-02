@@ -13,7 +13,7 @@
                 </div>
             @else
                 <div>
-                    <img class="mt-2" src="{{ asset('storage/' . $dish->image) }}">
+                    <img class="mt-2 image thumb" src="{{ asset('storage/' . $dish->image) }}">
                 </div>
             @endif
         </div>

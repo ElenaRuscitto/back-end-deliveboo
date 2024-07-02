@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use App\Models\Type;
 use App\Models\Dish;
 
+
 class RestaurantController extends Controller
 {
     //? Mi Restituisce tutti i ristoranti
@@ -22,6 +23,8 @@ class RestaurantController extends Controller
         return response()->json($response);
 
     }
+
+
 
 //? Mi Restituisce tutti i tipi di ristorante
     public function getTypes(){
