@@ -19,11 +19,13 @@
             <label>Tipo ristorante (<span class="text-danger">*</span>)</label>
         </div>
         <div class="btn-group mt-1" role="group" aria-label="Basic checkbox toggle button group">
-            @foreach ($types as $type)
-                <input name="types[]"type="checkbox" class="btn-check" id="{{$type->name}}" autocomplete="off" value="{{$type->id}}" @if (
+            <div class="flex-wrap d-flex align-content-center justify-content-center ">
+                @foreach ($types as $type)
+                <input name="types[]"type="checkbox" class="btn-check mx-1 my-" id="{{$type->name}}" autocomplete="off" value="{{$type->id}}" @if (
                     ($errors->any() && in_array($type->id, old('types', []))) )checked @endif >
                 <label class="btn btn-outline-primary btn-sm" for="{{$type->name}}">{{$type->name}}</label>
-            @endforeach
+                @endforeach
+            </div>
         </div>
         <span class="invalid-feedback" role="alert" id="types-error" style="display:none;">
             <strong>Seleziona almeno una tipologia.</strong>
