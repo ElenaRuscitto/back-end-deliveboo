@@ -1,10 +1,10 @@
 @import "/resources/scss/partials/variables";
 .aside {
     width: 200px;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 60px);
     position: fixed;
     z-index: 998;
-    top: 65px;
+    top: 60px;
 
     background-color: $third-color;
 
@@ -20,8 +20,8 @@
 @media screen and (max-width: 769px) {
     .aside {
         width: 80px;
-        height: calc(100vh - 58px);
-        top: 58px;
+        height: calc(100vh - 53px);
+        top: 53px;
         font-size: 1.2em;
         a {
             display: flex;

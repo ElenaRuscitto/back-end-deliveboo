@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm  my-header">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="{{ url('/admin') }}">
             <div class="my-logo">
-                <h3>
-                    DeliveBoo
-                </h3>
+                <div >
+                    <a href="{{url('/') }}"><img src="{{asset('logo.png')}}" alt="" class="logo-deliveboo"></a>
+                </div>
             </div>
             {{-- <div class="logo_laravel">
                 <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px">
@@ -74,3 +73,9 @@
         </div>
     </div>
 </nav>
+<style>
+    .logo-deliveboo{
+        max-width:100px;
+
+    }
+</style>
