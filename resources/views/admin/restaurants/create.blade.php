@@ -30,7 +30,7 @@
         <span class="invalid-feedback" role="alert" id="types-error" style="display:none;">
             <strong>Seleziona almeno una tipologia.</strong>
         </span>
-        <div class="row row-cols-2 mt-5">
+        <div class="row row-cols-1 row-cols-md-2 mt-5">
             {{--? Nome --}}
             <div class="col">
                 <div class="mb-3">
