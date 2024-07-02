@@ -12,7 +12,7 @@
                 </ul>
             </div>
     @endif
-    <form onsubmit="return validateCheckboxes()" action="{{ route('admin.store')}}" method="POST">
+    <form onsubmit="return validateCheckboxes()" action="{{ route('admin.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mt-3">

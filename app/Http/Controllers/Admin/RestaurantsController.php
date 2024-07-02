@@ -71,21 +71,28 @@ class RestaurantsController extends Controller
         //% Prendo l'utente loggato
         $user = Auth::user();
         $form_data = $request->all();
-        $new_restaurant = new Restaurant();
 
-        $form_data['slug'] = Help::createSlug($form_data['name'], Restaurant::class);
 
-            // verifico l'esistenza della chiave 'image' in $form_data
-            if(array_key_exists('image', $form_data)) {
-                // salvo immagine nello storage e ottengo il percorso
-                $image_path = Storage::put('uploads', $form_data['image']);
+        // verifico l'esistenza della chiave 'image' in $form_data
+        if(array_key_exists('image', $form_data)) {
 
+            if($request->hasFile('image')) {
+                $image_path = Storage::put('uploads', $request->file('image'));
 
                 $form_data['image'] = $image_path;
-
-
             }
 
+            // salvo immagine nello storage e ottengo il percorso
+            // $image_path = Storage::put('uploads', $form_data['image']);
+            // $original_image = $request->file('image')->getClientOriginalName();
+
+            // $form_data['image'] = $image_path;
+            // $form_data['original_image'] = $original_image;
+
+        }
+
+        $new_restaurant = new Restaurant();
+        $form_data['slug'] = Help::createSlug($form_data['name'], Restaurant::class);
         //? Riempio il nuovo ristorante e lo salvo
         $new_restaurant->fill($form_data);
         $new_restaurant->user_id = $user->id;
@@ -142,10 +149,7 @@ class RestaurantsController extends Controller
             // salvo immagine nello storage e ottengo il percorso
             $image_path = Storage::put('uploads', $form_data['image']);
 
-
-
             $form_data['image'] = $image_path;
-
 
             }
 
