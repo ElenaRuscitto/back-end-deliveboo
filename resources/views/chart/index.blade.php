@@ -15,8 +15,8 @@
                 <th>Vendite Totali (€)</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($statistics as $stat)
+        <tbody class="">
+            @foreach ($statistics->reverse() as $stat)
                 <tr>
                     <td>{{ $stat->date }}</td>
                     <td>{{ $stat->total_orders }}</td>
