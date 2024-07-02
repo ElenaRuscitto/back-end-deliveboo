@@ -25,8 +25,8 @@
 
         <nav class="navbar navbar-expand-md navbar-light shadow-sm d-flex justify-content-between">
             <div class="container">
-                <div class="logo-deliveboo">
-                    <a href="{{url('/') }}"><img src="{{asset('logo.png')}}" alt="" class="w-25"></a>
+                <div >
+                    <a href="{{url('/') }}"><img src="{{asset('logo.png')}}" alt="" class="logo-deliveboo"></a>
                 </div>
                 <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -99,7 +99,8 @@
     }
 
     .logo-deliveboo{
-            max-width:300px;
+        max-width:100px;
+
     }
 
 </style>
